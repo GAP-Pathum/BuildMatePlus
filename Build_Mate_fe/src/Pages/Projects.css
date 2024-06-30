@@ -13,8 +13,8 @@
 .pro-content{
   display: flex;
   flex-direction: column;
-    align-items: center;
-    margin-top: 15%;
+  align-items: center;
+  margin-top: 15%;
 
 }
 .pro-topic{
@@ -25,6 +25,7 @@
   }
 
   .pro-subtopic{
+    font-family: "Poppins", sans-serif;
     font-size: 200%;
     font-weight: 500;
     height: 20%;
@@ -33,6 +34,11 @@
     color: white;
     padding: 2% 5%;
     margin-top: 2%;
+  }
+
+  .larger {
+    font-size: 120%;
+    line-height: 51px;
   }
 
   .pro-body01{
@@ -79,7 +85,6 @@
 .pro-body03{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
 }
   .pro-fil{
     font-family: "Poppins", sans-serif;
@@ -131,6 +136,7 @@
     flex-direction: column;
     width: 80%;
     padding: 0 5%;
+    margin-bottom: 5%;
   }
   .pro-event{
     margin-left: 5%;
@@ -264,18 +270,5 @@
 }
 
 
-  
-  .pro-sm{
-    font-family: "Poppins", sans-serif;
-    color: #D9D9D9;
-    background-color: #0D113E;
-    border-radius: 10px;
-    margin-left: 64%;
-    margin-top: 66%;
-    width: 10%;
-    height: 35px;
-    font-size: 15px;
-    font-weight: 800;
-    margin-bottom: 4%;
-  }
+
  

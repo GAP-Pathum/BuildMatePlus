@@ -91,7 +91,7 @@ export default function Contact() {
               <div className="con-02">
                 <button className="contacts-button" onClick={handleSubmit}>Submit</button>
               </div>
-              
+               
             </div>
 
             <div className="contact-white-container2">

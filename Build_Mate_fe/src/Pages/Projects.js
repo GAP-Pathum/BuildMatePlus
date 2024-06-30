@@ -8,7 +8,7 @@ import Footer from '../Components/Footer/footer';
 
 const Projects = () => {
   const [activeButton, setActiveButton] = useState(null);
-  const [buttonText, setButtonText] = useState('');
+  const [buttonText, setButtonText] = useState('Single Family Homes');
   const [activeDetailButton, setActiveDetailButton] = useState(null);
 
   const scrollRefs = [useRef(), useRef(), useRef(), useRef(), useRef()];
@@ -23,7 +23,6 @@ const Projects = () => {
     setActiveDetailButton(buttonIndex);
   };
 
- 
 
   return (
     <div style={{position: 'relative'}}>
@@ -31,7 +30,7 @@ const Projects = () => {
       <img className='pro-mimg' src={mimg1} alt='Background'/>
       <div className='pro-content'>
         <h1 className='pro-topic'>Projects</h1>
-        <p className='pro-subtopic'>We build, We craft :<br/>Building Dreams Through Construction</p>
+        <p className='pro-subtopic'>We build, We craft :<br/><span class="larger">Building Dreams Through Construction</span></p>
       </div>
       <div className='pro-body01'>
         <div className='pro-st1'>Ongoing Projects</div>
@@ -618,21 +617,12 @@ const Projects = () => {
                </div>  
                
           </div>
-
-
-
-
-
-
-
           </div>
-               
-
-
+          
         </div>
         
       </div>
-      <button className='pro-sm'>see more</button>
+      
       <Footer/>  
     </div>
   );

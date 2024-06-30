@@ -20,7 +20,7 @@ const BlogPage = () => {
       <img className='pro-mimg' src={blogimg} alt='Background'/>
       <div className='pro-content'>
         <h1 className='pro-topic'>Blogs</h1>
-        <p className='pro-subtopic'>Breaking Into Product design :<br/>Advice from Untitled founder, james</p>
+        <p className='pro-subtopic'>Breaking Into Product design :<br/><span class="larger">Advice from Untitled founder, james</span></p>
       </div>
       
                <div class="news-events-container">

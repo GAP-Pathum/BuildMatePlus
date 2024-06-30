@@ -19,17 +19,18 @@
   border-radius: 0 0 0 155px ;
 }
 
-.sup-content{
+.Sup-content{
   display: flex;
   flex-direction: column;
   align-items: stretch;
   margin-left: 5%;
   
 }
+
 .pro-content01{
   display: flex;
   flex-direction: column;
-    align-items: center;
+  align-items: center;
 
 }
 
@@ -37,7 +38,9 @@
   justify-content: space-between;
   align-items: stretch;
   display: flex;
+
 }
+
 .sup-topic {
   font-family: "Poppins",sans-serif;
   font-size: 55px;
@@ -47,14 +50,14 @@
   text-align: left;
   width: 150%;
   margin: auto;
-
   }
 
-.sup-subtopic1 {
+.Sup-subtopic1 {
     font-family: "Poppins",sans-serif;
     font-weight: 500;
     letter-spacing: 0.02em;
     text-align: justify;
+    padding: 2%;
 }
 
   .sbutton1 {
@@ -119,6 +122,7 @@
   padding: 5%;
   
 }
+
 .sup-Subbody02{
   display: flex;
   width: 20%;
@@ -128,7 +132,7 @@
   border: 3px solid black; 
   padding: 3% 3%;
   border-radius: 50px;
-  background-color: #ff6a0090 ;
+  background-color: #ffffff ;
   
 }
 .sup-frame01{

@@ -5,7 +5,7 @@
     background-position: center;
     color: white;
   }
-  
+
 .wall1 {
     filter: brightness(65%);
     height: 610px;
@@ -231,25 +231,36 @@
 }
 
 .vertical-line {
-  position: absolute;
-  top: 105%;
-  left: 453.5px; 
-  transform: translateX(-90%); 
-  width: 3px;
-  height: 209%;
+  border: 3px solid black;
+  padding: 10% 0;
+  margin-left: 5%;
   background-color: #535353;
 }
 
 .archi-tab {
-  padding-left: 490px;
-  margin-top: -48.5%;
   border-spacing: 25px;  
+  position: relative;
+  z-index: 1;
 }
 
+.archi-event01{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 0 5%;
+}
+
+.archi-body02{
+  margin: 0 5% 0 5%;
+}
+.arch-body03{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
 .profile1 {
   background-color: #0D113E;
   width: 300px;
-  height: 383px;
   border-radius: 10px;  
   text-align: center;
   color: #ffffff;
@@ -264,13 +275,11 @@
   border-radius: 50%; 
   overflow: hidden; 
   border: 2px solid #ffffff; 
-  margin-left: 72px;
-  margin-top: 20px;
 }
 
 .pp {
-  width: 355.2px;
-  height: 201px;
+  width:100%;
+  border-radius: 20px 20px 0 0;
 }
 
 .profile-name {

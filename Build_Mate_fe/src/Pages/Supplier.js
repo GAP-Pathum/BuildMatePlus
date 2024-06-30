@@ -52,9 +52,9 @@ export default function Suppliers() {
       <Navbar />
       <div className='home_sup'>
         <img className='sup-mimg' src={supimg} alt='Background' style={{ height: '100%', background: 'cover' }} />
-        <div className='sup-content'>
+        <div className='Sup-content'>
           <h1 className='sup-topic'>Discover Top Suppliers for Your Construction Essentials!</h1>
-          <p className='sup-subtopic1'>
+          <p className='Sup-subtopic1'>
             Choose your path to construction excellence: select the best services, materials, or both for your project with Buildmate+. Streamline your decisions, empower your vision, and build with confidence.
           </p>
           <div className='sup-topButton'>

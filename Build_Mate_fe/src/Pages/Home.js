@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Home.css';
-import Registration from './Registration';
 import CountUp from 'react-countup';
 import homeimg from '../Components/Assets/wall1.jpg';
 import ic1 from '../Components/Assets/ic1.png'; 
@@ -19,8 +18,7 @@ import viewImage from '../Components/Assets/3d-view(1).png';
 
 import ScrollTrigger from "react-scroll-trigger";
 import { Route } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -48,9 +46,6 @@ const Home = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  const navigate = useNavigate();
-
   return (
    <>
    
@@ -93,29 +88,21 @@ const Home = () => {
         <div className='path'>
                       <div className='h1'>
                        <div className='firstbox'id='firstbox'>
-                       <div className='box1'>
+                          <div className='box1'>
                             <img src={dreamimage} className='dreamimg'/>
                             <div className='box'><h1 className='h1-text'>Ready to start building your dream or maintaining your existing construction? 
-                            </h1><button className='h1-button' onClick={() => navigate('/Pages/Connect')}
-                               >Build your Team </button></div>
+                            </h1>
+                            <Link to="/Pages/connect" >
+                                    <button className='h1-button'  > Build your dream </button>
+                            </Link></div>
                           </div>
                           <div className='box2'>
-                            <img
-                              src={oppertunityimg}
-                              className='dreamimg'
-                              style={{ transform: 'scaleX(-1)', zIndex: '-1', borderRadius: '0 65px 65px 0' }}
-                            />
-                            <div className='box'>
-                              <h1 className='h2-text' style={{ transform: 'scaleX(-1)' }}>
-                                Ready to take on new projects or find exciting job opportunities in the construction industry?
-                              </h1>
-                              <button
-                                className='h2-button'
-                                onClick={() => navigate('/Pages/registration')}
-                                style={{ transform: 'scaleX(-1)' }}
-                              >
-                                Explore Opportunities
-                              </button>
+                            <img src={oppertunityimg} className='dreamimg' style={{ transform: 'scaleX(-1)', zIndex:'-1',borderRadius:'0 65px 65px 0' }}/>
+                            <div className='box'><h1 className='h2-text' style={{transform:'scaleX(-1)'}}>Ready to take on new projects or find exciting job opportunities in the construction industry? 
+                            </h1>
+                            <Link to="/Pages/projects" >
+                              <button className='h1-button'  style={{transform:'scaleX(-1)', }}>Explore Opportunities</button>
+                            </Link>
                             </div>
                           </div>
                       </div> 
@@ -185,7 +172,7 @@ const Home = () => {
                               <p className='re-name'>John Walker</p>
                               <p className='re-po'>Architecture</p></div>
                               <div className='review-star'>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px', filter: 'grayscale(10%)'}}/>
+                                <img src={starImage} alt='star' className='star' style={{width:'15px', filter: 'grayscale(100%)'}}/>
                                 <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
                                 <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
                                 <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
@@ -195,40 +182,20 @@ const Home = () => {
                             </div>
                             
 
-                            <div className="con-1">
-                              <img src={profile} alt="Image" className='profile-img' style={{width:'70px'}} />
-                              <p className='re'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.</p>
-                              <div className='line-re'></div>
-                              <div className='footer-con'>
-                                <div className='position'>
-                              <p className='re-name'>John Walker</p>
-                              <p className='re-po'>Architecture</p></div>
-                              <div className='review-star'>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px', filter: 'grayscale(75%)'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                              </div>
-                              </div>
+                            <div className='con-1'>
+                            <img src={profile} alt="Image" style={{width:'70px'}} className='profile-img'/>
+                            <p className='re'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.</p>
+                            <div className='line-re'></div>
+                            <p className='re-name'>John Walker</p>
+                            <p className='re-po'>Architecture</p>
                             </div>
 
-                            <div className="con-1">
-                              <img src={profile} alt="Image" className='profile-img' style={{width:'70px'}} />
-                              <p className='re'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.</p>
-                              <div className='line-re'></div>
-                              <div className='footer-con'>
-                                <div className='position'>
-                              <p className='re-name'>John Walker</p>
-                              <p className='re-po'>Architecture</p></div>
-                              <div className='review-star'>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px', filter: 'grayscale(100%)'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                                <img src={starImage} alt='star' className='star' style={{width:'15px'}}/>
-                              </div>
-                              </div>
+                            <div className='con-1'>
+                            <img src={profile} alt="Image" style={{width:'70px'}} className='profile-img'/>
+                            <p className='re'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.</p>
+                            <div className='line-re'></div>
+                            <p className='re-name'>John Walker</p>
+                            <p className='re-po'>Architecture</p>
                             </div>
 
                           </div>
