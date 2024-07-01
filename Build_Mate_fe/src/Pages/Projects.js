@@ -632,7 +632,6 @@ const Projects = () => {
         </div>
         
       </div>
-      <button className='pro-sm'>see more</button>
       <Footer/>  
     </div>
   );

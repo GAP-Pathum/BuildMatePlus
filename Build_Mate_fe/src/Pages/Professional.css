@@ -1,29 +1,37 @@
+/* Container for the user profile form */
 .user_profile_form {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: "Poppins", sans-serif;
-    background-color: white;
-    overflow: hidden; /* This line can stay to prevent horizontal overflow */
+    background-color: #FF6B00;
+    overflow: hidden;
+    padding: 2% 0;
 }
 
+/* Form container */
 .pro-form {
     width: 50%;
-    background-color: #D9D9D9;
-    padding: 2%;
-    border-radius: 10px;
-    font-size: 15px;
+    background: #ffffff;
+  padding: 0 5%;
+  width: 50%;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     max-height: 90vh; /* Add a max-height to make the container scrollable */
     overflow-y: auto; /* Enable vertical scrolling */
 }
 
+/* Form header */
 .pro-form-h1 h1 {
-    font-size: 250%;
-    margin: 0;
-    font-weight: 900;
+    font-size: 3.0vw;
+  font-weight: 700;
+  text-align: center;
+  margin: 5% auto;
+  color: #333333;
 }
 
+/* General input styles */
 .pro-form input {
     border: none;
     padding: 0 0 0 5%;
@@ -31,14 +39,9 @@
     background-color: white;
 }
 
-.pro-form-l0 {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-}
-
+/* Profile picture container */
 .pro-profilepic {
-    display: flex; /* Allow setting width and height */
+    display: flex;
     width: 150px; /* Adjust width as needed */
     height: 150px; 
     background-color: #ffffff; /* Set background color */
@@ -61,6 +64,13 @@
     left: 0;
     width: 10%;
     height: 10%; 
+}
+
+/* Form layout adjustments */
+.pro-form-l0 {
+    display: flex;
+    align-items: center;
+    justify-content: left;
 }
 
 .pro-form-l1 {
@@ -103,9 +113,10 @@
     width: 80%;
 }
 
-.pro-form-l3 label{
+.pro-form-l3 label {
     margin-bottom: 2%;
 }
+
 .pro-form-l3 input {
     width: 120%;
     background-color: white;
@@ -134,13 +145,16 @@
     flex-direction: column;
 }
 
-.pro-form-l6 label{
+.pro-form-l6 label {
     margin-bottom: 2%;
 }
-.pro-form-l6 input, textarea {
+
+.pro-form-l6 input,
+textarea {
     width: 80%;
 }
 
+/* Button group container */
 .pro-button-group {
     background-color: #FF6B00;
     color: white;
@@ -174,6 +188,7 @@
     font-weight: 600;
 }
 
+/* Form submit buttons */
 .pro-form-button1 {
     display: flex;
     justify-content: flex-end;
@@ -194,35 +209,37 @@
     background-color: white;
     color: #0D113E;
 }
-.job-file-container { /* Create a container for both elements */
-    display: flex; /* Allow setting width and height */
-    background-color: #ffffff; /* Set background color */
-    border: none; /* Create a border */
-    padding: 5px; /* Add padding for spacing */
+
+/* Previous job file container */
+.job-file-container {
+    display: flex;
+    background-color: #ffffff;
+    border: none;
+    padding: 5px;
     cursor: pointer;
-    border-radius: 10px; 
+    border-radius: 10px;
     align-items: center;
     justify-content: center;
-  }
-  
-  .job-file-container input[type="file"] {
+}
+
+.job-file-container input[type="file"] {
     opacity: 0;
     position: absolute;
     top: 0;
     left: 0;
     width: 10%;
     height: 10%; 
-    opacity: 0;
 }
-  
-  .job-profile-image { /* Style the image element */
-    width: 10%; /* Set the image width (adjust as needed) */
-    height: auto; /* Maintain image aspect ratio */
+
+.job-profile-image {
+    width: 10%;
+    height: auto;
     object-fit: cover; 
     filter: contrast(50%);
-  }
-  
-  @media (max-width: 768px) {
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
     .pro-form {
         width: 100%;
         padding: 5%;

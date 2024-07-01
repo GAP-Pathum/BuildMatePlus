@@ -21,14 +21,14 @@ export default function Connect() {
       <Navbar />
       <div className="contact-image-container">
         <img className='connect-img'src={c1} alt="Background" />
-        <div className="contact-white-container">
+        <div className="contact-white-container" style={{padding:'5%'}}>
           <div className='contact-head'>BUILD YOUR DREAM</div>
           <p className='para'>
             From concept to completion, Buildmate+ helps you bring your construction dreams to life. Whether you're starting a new project or maintaining an existing one, our platform empowers you to create, collaborate, and construct with confidence.
           </p>
           <div className='orange-container'>
             <div className="orange-container1">
-              <div className='para1'>Find professionals For your dream.</div>
+              <div className='para1'>Find professionals For your construction</div>
               <div className="connect-02">
                 <button className="con-button" onClick={() => window.location.href = '/Pages/Architecture'}>
                 Find Professionals
@@ -37,7 +37,7 @@ export default function Connect() {
               <div className='sen1'>More Details</div>
             </div>
             <div className="orange-container1">
-              <div className='para1'>Find the Suppliers for Your Maintenance Needs</div>
+              <div className='para1'>Find the Suppliers for Your Construction</div>
               <div className="connect-02">
                 <button className="con-button" onClick={() => window.location.href = '/Pages/Supplier'}>
                 Find Suppliers
