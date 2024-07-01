@@ -7,7 +7,7 @@ import leftArrow from '../Components/Assets/left-arrow.png';
 import linkedin from '../Components/Assets/linkedin.png';
 import gps from '../Components/Assets/gps.png';
 import web from '../Components/Assets/web.png';
-import uploadIcon from '../Components/Assets/Archi-Porfolio.jpg';
+import Portfolio from '../Components/Assets/Archi-Porfolio.jpg';
 import currentPro from '../Components/Assets/current-pro.jpg';
 import star from '../Components/Assets/star.png';
 
@@ -92,9 +92,9 @@ const Profile = () => {
                 <button className="view-all">View All</button>
                 <div className='main-devide-section'>
                   <div className='devide-section'>
-                    <img src={uploadIcon} alt='portfolio' />
-                    <img src={uploadIcon} alt='portfolio' />
-                    <img src={uploadIcon} alt='portfolio' />
+                    <img src={Portfolio} alt='portfolio' />
+                    <img src={Portfolio} alt='portfolio' />
+                    <img src={Portfolio} alt='portfolio' />
                   </div>
                 </div>
               </div>

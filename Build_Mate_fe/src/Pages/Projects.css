@@ -79,7 +79,6 @@
 .pro-body03{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
 }
   .pro-fil{
     font-family: "Poppins", sans-serif;
@@ -131,6 +130,7 @@
     flex-direction: column;
     width: 80%;
     padding: 0 5%;
+    margin-bottom: 5%;
   }
   .pro-event{
     margin-left: 5%;

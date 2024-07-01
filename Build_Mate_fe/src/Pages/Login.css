@@ -148,6 +148,24 @@
   align-self: center;
 }
 
+.login-button{
+  background-color: #fff;
+  margin: 5% auto 3% auto; 
+  padding: 2% 20%;
+  border: none;
+  border-radius: 15px;
+  font-size: 20px; 
+  font-weight: 600;
+  width: 95%;
+  position: relative;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.login-button:hover{
+  background-color: #FF6B00;
+  color: #fff;
+}
 @media (max-width: 768px) {
   .login {
     height: auto; /* Allow height to adjust based on content */

@@ -5,8 +5,24 @@
   font-family: "Poppins", sans-serif;
 }
 
+.head-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.sub-head-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
 .wall {
-  filter: brightness(40%);
+  filter: brightness(30%);
   position: absolute;
   width: 100%;
   height: 90%;
@@ -21,34 +37,44 @@
 
 
 .content {
-  margin: 10% 0 0 0;
-  position: relative;
-  
+  width: 100%;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
 }
+.home-content-1{
 
+}
 .content h1{
-  
-  text-align: center;
-  font-size: 3rem;
+  max-width: 800px;
   margin: auto;
+  font-size: 6vh;
+  text-align: center;
 }
 .content p{
-  text-align: center;
-  margin: 0.5% auto;
+  width: 50%;
+  margin: 2% auto 2% auto;
   font-size: 1.5rem;
 }
 
 .ic1 { 
-  z-index: -5;
-  height: 70vh;
-  margin: -15% 0 0 8%;
+  position: absolute;
+  max-height: 100%; /* Adjust based on your design */
+  width: 10%;
+  height: auto;
+  left: 15%;
+  bottom: 30%;
+  margin-right: 20px; /* Space between the image and the content */
+  border-radius: 8px;
+  object-fit: cover;
+
 }
 .search-center {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 5%;
-  margin-top: -17%;
 }
 
 .search-bar-container {
@@ -158,7 +184,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 4% auto;
+  margin-top: 5%;
 
 }
 .downarrow{
@@ -177,8 +203,9 @@
 }
 
 .h2-text{
-  width: 75%;
+  width: 70%;
   color: black;
+  font-size: 1.8vw;
   text-align: left;
 }
 
@@ -193,41 +220,52 @@
   border: none;
 }
 
-.path{
-  background-color: #ffffff;
-  margin-top: -20%;
-  position:absolute;
-  z-index: -10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.woman-img{
+  position: absolute;
+  max-height: 100%; /* Adjust based on your design */
+  width: 25%;
+  right: 0.5%;
+  filter: opacity(50%);
+  height: auto;
+  margin-right: 20px; /* Space between the image and the content */
+  border-radius: 8px;
+  object-fit: cover;
+  z-index: -100;
+
 }
 .firstbox{
+  margin-top: 5%;
   padding: 0 10% ;
   max-width: 80%;
   max-height: 10%;
 }
 .box1{
   display: flex;
-  align-items: center;
-  margin: 30% auto auto auto;
+  overflow: hidden;
+  margin:  auto;
   border-radius: 65px;
   box-shadow: 0 0 40px rgba(67, 67, 67, 0.4);
   
 }
 .dreamimg{
   
-  height: 390px;
+  height: auto;
+  border-radius: 65px 0 0 65px;
+
+}
+
+.dreamimg01{
+  width: 45%;
+  height: auto;
   border-radius: 65px 0 0 65px;
 
 }
 .box {
   display: flex;
   align-items: center;
-
+  padding: 0 5%;
   flex-grow: 1;
-  height: 350px;
-  padding: 20px 80px 20px 20px; /* Adjust as needed */
+  height: auto;/* Adjust as needed */
   margin-left: -40%;
   background: linear-gradient(to right, 
     rgba(217, 217, 217, 0.19) 0%,      
@@ -240,16 +278,17 @@
     justify-content: center;
 }
 .h1-text{
-  width: 40%;
+  width: 65%;
   color: black;
   text-align: right;
-  font-size: 150%;
+  font-size: 1.8vw;
+  
 }
 .h1-button{
   border-radius: 50px;
   color: white;
-  font-size: 23px;
-  padding: 10px 20px;
+  font-size: 2.0vw;
+  padding: 10px 30px;
   font-weight: 600;
   background-color:#0D113E;
   border: none;
@@ -258,7 +297,6 @@
 }
 .box2{
   display: flex;
-  align-items: center;
   margin: 3% auto auto auto;
   transform: scaleX(-1);
   
@@ -371,7 +409,7 @@
 .re-con{
   background-color: #d9d9d9;
   width: 100%;
-  margin: 3% auto auto auto;
+  margin: 0 auto auto auto;
   padding: 3% 0;
 }
 
@@ -449,17 +487,15 @@
   width: 200px;
 }
 
+.wel-all-collection{
+  margin-top: 35%;
+}
+
 /* Default styles */
 
 /* Add more breakpoints and adjust styles as needed */
 @media (max-width: 1200px) {
-  .content h1 {
-    font-size: 2.5rem; /* Decrease font size */
-  }
-
-  .content p {
-    font-size: 1.3rem; /* Decrease font size */
-  }
+  
 
   .search-bar-container {
     width: 70%; /* Decrease width */
@@ -484,10 +520,6 @@
     padding: 6px 12px; /* Adjust padding */
   }
 
-  .box1,
-  .box2 {
-    height: 300px; /* Adjust height */
-  }
 
   .det {
     margin: 1% auto; /* Adjust margin */
@@ -542,5 +574,17 @@
   .re-name,
   .re-po {
     font-size: 10px; /* Decrease font size */
+  }
+}
+/* Responsive design */
+@media (max-width: 768px) {
+  .ic1 {
+      max-width: 100%; /* Adjust the width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .ic1 {
+      max-width: 100%; /* Adjust the width for even smaller screens */
   }
 }

@@ -37,6 +37,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
   border-radius: 40px 0 0 40px;
   
@@ -77,6 +78,7 @@
 
 .pro-links p{
   margin: auto;
+  text-align: left;
 }
 .pro-buttonVersion{
   margin: 5% 0;
@@ -227,5 +229,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
+.profMiniBox4{
+  display: flex;
+}
+.profMiniBox4 img{
+  padding: 2%;
+  width: 25%;
+  display: flex;
+}
 /* Additional styles as needed for the rest of your component */

@@ -37,12 +37,12 @@ const Navbar = () => {
           <li><Link to="/Pages/about">About</Link></li>
           <li><Link to="/Pages/projects">Projects</Link></li>
           <li><Link to="/Pages/BlogPage">Blogs</Link></li>
+          <li><Link to="/Pages/ProfProfile">Profile</Link></li>
           <li><Link to="/Pages/contact">Contact</Link></li>
 
           {isAuthenticated ? (
             <div className='navbtn'>
-              <li><span>Hi, {firstName}</span></li>
-              <li>
+              <li><span>Hi, {firstName} </span>
                 <button className='signbtn' style={{ border: 'none' }} onClick={handleLogout}>Logout</button>
               </li>
             </div>

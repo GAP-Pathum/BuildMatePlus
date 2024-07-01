@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-around;
     padding: 5px 16px;
-    z-index: 100; /* Allow items to wrap to the next line */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
   }
   
   .navbar img {
@@ -64,6 +64,7 @@
     cursor: pointer;
     font-family: "Poppins", sans-serif;
   }
+  
   
   /* Media queries for responsiveness */
   @media (max-width: 768px) {

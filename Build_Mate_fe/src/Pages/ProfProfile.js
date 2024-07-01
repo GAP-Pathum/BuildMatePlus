@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/footer';
 import linkedin from '../Components/Assets/linkedin.png';
@@ -6,11 +6,13 @@ import gps from '../Components/Assets/gps.png';
 import Phone from '../Components/Assets/phone-call(1).png';
 import Email from '../Components/Assets/email(1).png';
 import web from '../Components/Assets/web.png';
-import uploadIcon from '../Components/Assets/cloud-computing.png'; // Add upload icon
+import uploadIcon from '../Components/Assets/upload.png';
 import './ProfProfile.css';
 import axios from 'axios';
 import star from '../Components/Assets/star.png';
+import Portfolio from '../Components/Assets/Archi-Porfolio.jpg';
 import { useNavigate } from 'react-router-dom';
+import currentPro from '../Components/Assets/current-pro.jpg';
 
 const Review = ({ name, date, text }) => (
   <div className="review">
@@ -29,14 +31,6 @@ const Review = ({ name, date, text }) => (
 
 const Profile = () => {
   const navigate = useNavigate();
-
-  const [reviews, setReviews] = useState([
-    { name: 'John Doe', date: '2023-06-20', text: 'Great project! Highly recommend.' },
-    { name: 'Jane Smith', date: '2023-06-18', text: 'Loved working with this team.' },
-  ]);
-
-  const [newReview, setNewReview] = useState({ name: '', date: '', text: '' });
-  const [editing, setEditing] = useState(false);
   const [profile, setProfile] = useState({
     name: '',
     profession: '',
@@ -48,35 +42,40 @@ const Profile = () => {
     instagram: '',
     website: '',
     about: '',
-    profilePicture: '', // State to hold profile picture URL
+    profilePicture: '',
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setProfile({ ...profile, [name]: value });
-  };
+  const [reviews, setReviews] = useState([]);
 
-  // Function to handle profile picture upload
-  const handleProfilePictureUpload = (e) => {
-    const file = e.target.files[0]; // Assuming single file selection
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setProfile({ ...profile, profilePicture: reader.result });
-    };
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleSave = () => {
-    axios.post('/api/profile', profile)
+  useEffect(() => {
+    // Fetch the profile data from the backend
+    axios.get('/api/profile')
       .then(response => {
-        setEditing(false);
-        alert('Profile saved successfully');
+        setProfile(response.data);
       })
       .catch(error => {
-        console.error('There was an error saving the profile!', error);
+        console.error('There was an error fetching the profile!', error);
       });
+
+    // Fetch the reviews data from the backend (if applicable)
+    axios.get('/api/reviews')
+      .then(response => {
+        setReviews(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the reviews!', error);
+      });
+  }, []);
+
+  const defaultText = {
+    name: 'Your Name',
+    profession: 'Your Profession',
+    email: 'Your Email',
+    location: 'Your Location',
+    phone: 'Your Phone Number',
+    linkedin: 'Your LinkedIn',
+    website: 'Your Website',
+    about: 'Short bio about yourself',
   };
 
   return (
@@ -96,44 +95,37 @@ const Profile = () => {
                 <p>Upload your image</p>
               </div>
             )}
-            <input
-              type="file"
-              id="profilePictureInput"
-              accept="image/*"
-              style={{ display: 'none' }}
-              onChange={handleProfilePictureUpload}
-            />
           </div>
 
           <div className='pro-mainTopic'>
-            <div className='pro-name'>Jane Smith</div>
-            <div className='pro-profession'>Architecture</div>
+            <div className='pro-name'>{profile.name || <span className="default-text">{defaultText.name}</span>}</div>
+            <div className='pro-profession'>{profile.profession || <span className="default-text">{defaultText.profession}</span>}</div>
           </div>
           <div className='pro-links'>
             <img src={Email} alt='email' className='pro-Icon' />
-            <p>johndoe@example.com</p>
+            <p>{profile.email || <span className="default-text">{defaultText.email}</span>}</p>
           </div>
           <div className='pro-links'>
             <img src={linkedin} alt='linkedin' className='pro-Icon' />
-            <p>linkedin.com/in/johndoe</p>
+            <p>{profile.linkedin || <span className="default-text">{defaultText.linkedin}</span>}</p>
           </div>
           <div className='pro-links'>
             <img src={Phone} alt='phone' className='pro-Icon' />
-            <p>0123456789</p>
+            <p>{profile.phone || <span className="default-text">{defaultText.phone}</span>}</p>
           </div>
           <div className='pro-links'>
             <img src={gps} alt='location' className='pro-Icon' />
-            <p>New York, USA</p>
+            <p>{profile.location || <span className="default-text">{defaultText.location}</span>}</p>
           </div>
           <div className='pro-links'>
             <img src={web} alt='website' className='pro-Icon' />
-            <p>http://www.johndoe.com</p>
+            <p>{profile.website || <span className="default-text">{defaultText.website}</span>}</p>
           </div>
           <div className='pro-bio'>
-            <p>Creative architect with a passion for blending form, function, and sustainability. Dedicated to designing spaces that inspire and enrich lives. Constantly seeking innovative solutions to complex design challenges.</p>
+            <p>{profile.about || <span className="default-text">{defaultText.about}</span>}</p>
           </div>
           <div className='pro-buttonVersion'>
-            <button className="message-button" onClick={() => navigate('/Pages/EditProfile')}>Edit Profile</button>
+            <button className="message-button" onClick={() => navigate('/Pages/EditProfile', { state: { profile } })}>Edit Profile</button>
             <button className="message-button" onClick={() => window.location.href = '/Pages/ArchProfile'}>Public Profile</button>
           </div>
         </div>
@@ -177,6 +169,26 @@ const Profile = () => {
                   <h3><span>:21</span>hr</h3>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className='profileBox02'>
+            <h2>Portfolios</h2>
+            <div className='profMiniBox4'>
+              <img src={Portfolio} alt='portfolio' />
+              <img src={Portfolio} alt='portfolio' />
+              <img src={Portfolio} alt='portfolio' />
+            </div>
+            <h2>Current Projects</h2>
+            <div className='profMiniBox4'>
+              <img src={currentPro} alt='portfolio' />
+              <img src={currentPro} alt='portfolio' />
+              <img src={currentPro} alt='portfolio' />
+            </div>
+            <h2>Current Projects</h2>
+            <div className='profMiniBox4'>
+              <img src={currentPro} alt='portfolio' />
+              <img src={currentPro} alt='portfolio' />
+              <img src={currentPro} alt='portfolio' />
             </div>
           </div>
           <div className='profileBox02'>

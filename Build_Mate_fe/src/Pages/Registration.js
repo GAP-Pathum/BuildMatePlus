@@ -71,7 +71,7 @@ function Registration() {
                 break;
             case "professional":
                 endpoint = "http://localhost:8000/api/registerProfessional";
-                redirectPath = "/Pages/Professional";
+                redirectPath = "/Pages/ProfProfile";
                 break;
             case "service supplier":
                 endpoint = "http://localhost:8000/api/registerServiceSupplier";
@@ -174,26 +174,30 @@ function Registration() {
                             required
                         />
                     </label>
-                    <label className="reg-form-l1">
-                        First Name <br/>
-                        <input
-                            type="text"
-                            name="firstName"
-                            value={profileInfo.firstName}
-                            onChange={handleChange}
-                            required
-                        />
-                    </label>
-                    <label className="reg-form-l1">
-                        Last Name <br/>
-                        <input
-                            type="text"
-                            name="lastName"
-                            value={profileInfo.lastName}
-                            onChange={handleChange}
-                            required
-                        />
-                    </label>
+                    <div className="reg-form-fulll1">
+                        <label className="reg-form-l2">
+                            First Name <br/>
+                            <input
+                                type="text"
+                                name="firstName"
+                                value={profileInfo.firstName}
+                                onChange={handleChange}
+                                required
+                            />
+                        </label>
+                        <br/>
+                        <label className="reg-form-l2">
+                            Last Name <br/>
+                            <input
+                                type="text"
+                                name="lastName"
+                                value={profileInfo.lastName}
+                                onChange={handleChange}
+                                required
+                            />
+                        </label>
+                    </div>
+                    
                     <label className="reg-form-l2">
                         Birthday<br/>
                         <div className="reg-form-dropdown1">

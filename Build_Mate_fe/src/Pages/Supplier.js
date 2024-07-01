@@ -82,7 +82,7 @@ export default function Suppliers() {
                 {isSearching ? (
                   <input
                     type='text'
-                    className='search-input'
+                    className='search-input01'
                     value={searchQuery}
                     onChange={handleSearchChange}
                     onBlur={handleSearchBlur}
@@ -110,7 +110,7 @@ export default function Suppliers() {
                 {isSearching ? (
                   <input
                     type='text'
-                    className='search-input'
+                    className='search-input01'
                     value={searchQuery}
                     onChange={handleSearchChange}
                     onBlur={handleSearchBlur}

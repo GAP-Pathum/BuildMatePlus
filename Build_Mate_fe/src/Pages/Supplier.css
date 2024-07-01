@@ -60,6 +60,7 @@
   .sbutton1 {
     background-color: #FF6B00;
     border: none;
+    margin-top: 5%;
     padding: 17px 33px 17px 33px;
     border-radius: 25px 0px 25px 25px;
     font-family: "Poppins",sans-serif;
@@ -178,7 +179,7 @@
   cursor: pointer;
 }
 
-.search-input {
+.search-input01 {
   border: none;
   outline: none;
   width: 100%;

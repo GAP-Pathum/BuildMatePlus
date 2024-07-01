@@ -1,4 +1,3 @@
-// src/Pages/Chat.js
 import React from 'react';
 import { ChatEngine } from 'react-chat-engine';
 import ChatFeed from '../Components/ChatWindow/ChatFeed';
@@ -8,23 +7,28 @@ import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/footer';
 
 const Chat = () => {
-    if (!localStorage.getItem('username')) {
-        return <LoginForm />;
-    }
+  const username = localStorage.getItem('username');
+  const password = localStorage.getItem('password');
 
-    return (
-        <>
-            <Navbar />
-            <ChatEngine
-                height="100vh"
-                projectID="44be4f6a-d74f-4995-812a-2e60b0b37b6b"
-                userName={localStorage.getItem('username')}
-                userSecret={localStorage.getItem('password')}
-                renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
-            />
-            <Footer />
-        </>
-    );
+  if (!username || !password) {
+    return <LoginForm />;
+  }
+
+  return (
+    <>
+      <div className='Archi-nav' style={{ backgroundColor: '#FF6B00' }}>
+        <Navbar />
+      </div>
+      <ChatEngine
+        height="100vh"
+        projectID="8bf99a30-df97-4d7e-b76a-a9e19052d8ca"
+        userName={username}
+        userSecret={password}
+        renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
+      />
+      <Footer />
+    </>
+  );
 };
 
 export default Chat;
