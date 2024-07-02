@@ -154,6 +154,16 @@
 .search-button:hover {
   background-color: darkblue;
 }
+
+.dropdown-content {
+     display: block;
+     position: absolute;
+     min-width: 160px;
+     padding: 90px 16px;
+     z-index: 1;
+     cursor: pointer;
+}
+
 .arrow{
   display: flex;
   justify-content: center;

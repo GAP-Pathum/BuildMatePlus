@@ -49,6 +49,15 @@ const Home = () => {
     }
   };
 
+  const [value, setValue] = useState()
+  const [data, setData] = useState([])
+  const onChange = async (e) => {
+    setValue(e.target.value)
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const data = await response.json()
+    setData(data)
+  }
+
   const navigate = useNavigate();
 
   return (
@@ -77,11 +86,21 @@ const Home = () => {
                 type="text"
                 className="search-input"
                 placeholder={` Search ${searchType.toLowerCase()}`}
-                value={searchQuery}
-                onChange={handleSearchInputChange}
+                  onChange={onChange}
+                  value = {value}
               />
               <button className="search-button" onClick={handleSearchSubmit}>Search</button>
-            </div>
+              </div>
+              <div className='dropdown-content'>
+                {
+                  value &&
+                  data.filter(item => item.title.startsWith(value) && item.title !== value)
+                    .slice(0, 5)
+                    .map(item => <div key={item.id} onClick={(e) => setValue(item.title)}>
+                    {item.title} <hr />
+                    </div>)
+                        }
+              </div>
           </div>
         </div>
           <div className='arrow'>
