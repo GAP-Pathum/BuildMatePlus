@@ -29,7 +29,8 @@
 .pro-content01{
   display: flex;
   flex-direction: column;
-    align-items: center;
+  align-items: center;
+  margin-top: 5%;
 
 }
 
@@ -53,8 +54,9 @@
 .sup-subtopic1 {
     font-family: "Poppins",sans-serif;
     font-weight: 500;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.08em;
     text-align: justify;
+    margin-top: 5%;
 }
 
   .sbutton1 {
@@ -121,7 +123,7 @@
 }
 .sup-Subbody02{
   display: flex;
-  width: 20%;
+  width: 24%;
   height: 50%;
   flex-direction: column;
   align-items: center;

@@ -7,15 +7,15 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'pathumpasindu41@gmail.com',
-        pass: 'lkoy tvyt vydf olny'
+        user: 'buildmateplus@gmail.com',
+        pass: 'wgln wrwl xeiw jsxq'
     }
 });
 
 // Function to send a welcome email
 async function sendClientEmail(email, firstName, userType) {
     const mailOptions = {
-        from: 'pathumpasindu41@gmail.com',
+        from: 'buildmateplus@gmail.com',
         to: email,
         subject: 'Welcome to BuildMate+!',
         html: `
@@ -85,6 +85,12 @@ router.post('/', async (req, res) => {
                 return res.status(400).json({ message: "Invalid user type" });
         }
 
+        // Check if the user already exists
+        const existingUser = await userModel.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: "User with this email already exists" });
+        }
+
         const newUser = new userModel({
             email,
             firstName,
@@ -104,7 +110,7 @@ router.post('/', async (req, res) => {
         
         // Attempt to send the email
         try {
-            await sendClientEmail(email, firstName);
+            await sendClientEmail(email, firstName, userType);
         } catch (error) {
             console.error("Error sending email:", error);
             // Log the error, but continue to respond with success

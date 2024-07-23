@@ -46,7 +46,7 @@ function App() {
           <Route path="/Pages/Chat" element={<Chat />} />
           <Route path="/Pages/ArchProfile" element={<ArchProfile />} />
           <Route path="/Pages/ProfProfile" element={<ProfProfile/>}/>
-          {/* <Route path="/Pages/EditProfile" element={<EditProfile/>} /> */}
+          <Route path="/Pages/EditProfile" element={<EditProfile/>} />
         </Routes>
         <ChatIcon />
       </Router>

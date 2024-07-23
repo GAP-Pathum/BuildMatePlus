@@ -26,7 +26,7 @@
     letter-spacing: 0.02em;
     text-align: left;
     left: 4%;
-    margin-top: 1%;
+    margin-top: 65px;
 
 }
 
@@ -38,7 +38,6 @@
     letter-spacing: 0.02em;
     text-align: left;
     left: 70px;
-    
   
 }
 
@@ -52,11 +51,9 @@
     font-size: 20px;
     font-weight: 500;
     line-height: 30px;
-    
+    margin-right: 85%;
     text-align: left;
     margin-top: 40px;
-    width: 15%;
-    cursor: pointer;
     
 }
 
@@ -79,8 +76,8 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: 6%;
-    padding-top: 0.5%;
+    margin-top: 7%;
+    padding-top: 1.5%;
     padding-left: 4%;
     padding-bottom: 1%;
 
@@ -107,7 +104,6 @@
     left: 80px;
     padding-top: 200px;
     padding-left: 4%;
-   
 }
 
 .arch2 {
@@ -134,7 +130,6 @@
     border-bottom: 2px solid #000000;
     margin-left: 4%;
     width: 91.5%;
-    margin-top: -13%;
 }
 
 .arch2::after {
@@ -146,7 +141,6 @@
   border-top: 2px solid #000000; 
   width: 91.5%;
   margin-left: 4%;
-  margin-top: -15%;
 }
 
 .highlight {
@@ -159,7 +153,17 @@
 
 }
 
+.arch3 {
+  padding-left: 5%;
+  margin-top: 50px;
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 37.5px;
+  text-align: left;
 
+  
+}
 
 .button-search {
   margin-left: 87%;
@@ -173,8 +177,7 @@
   text-align: right;
   width: 130px;
   height: 50px;
-  margin-top: -45%;
-  cursor: pointer;
+  margin-top: -50%;
 
 }
 
@@ -182,7 +185,7 @@
   margin-left: 5%;
   font-family: "Poppins", sans-serif;
   font-size: 25px;
-  margin-top: 4%;
+  margin-top: auto;
   font-weight: 600;
   line-height: 37.5px;
   text-align: left;
@@ -191,7 +194,6 @@
 
 .container1 {
  background-color: #ffffff;
- margin-top: 2%;
 }
 
 .button-2 {
@@ -208,7 +210,6 @@
   padding-left: 5%;
   margin-left: 4%;
   margin-top: 25px;
-  cursor: pointer;
 }
 
 .button2 {
@@ -227,22 +228,21 @@
   padding-left: 5%;
   margin-left: 4%;
   margin-top: 25px;
-  cursor: pointer;
 }
 
 .vertical-line {
   position: absolute;
-  top: 105%;
+  top: 1110px;
   left: 453.5px; 
   transform: translateX(-90%); 
   width: 3px;
-  height: 209%;
+  height: 1650px;
   background-color: #535353;
 }
 
 .archi-tab {
   padding-left: 490px;
-  margin-top: -48.5%;
+  margin-top: -56.5%;
   border-spacing: 25px;  
 }
 
@@ -281,7 +281,6 @@
   text-align: center;
 
 }
-
 
 .profile-title {
   font-family: "Poppins",sans-serif;
@@ -330,7 +329,5 @@
   border-radius: 8px;
   border-color: #ffffff;
   border-style: double;
-  cursor: pointer;
 }
-
 

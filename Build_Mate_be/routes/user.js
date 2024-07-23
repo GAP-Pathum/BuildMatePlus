@@ -7,15 +7,15 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'pathumpasindu41@gmail.com',
-      pass: 'lkoy tvyt vydf olny'
+        user: 'buildmateplus@gmail.com',
+        pass: 'wgln wrwl xeiw jsxq'
     }
 });
 
 // Function to send a welcome email
-async function sendWelcomeEmail(email, firstName) {
+async function sendClientEmail(email, firstName, userType) {
     const mailOptions = {
-        from: 'pathumpasindu41@gmail.com',
+        from: 'buildmateplus@gmail.com',
         to: email,
         subject: 'Welcome to BuildMate+!',
         html: `
@@ -55,7 +55,7 @@ async function sendWelcomeEmail(email, firstName) {
             <p>Best regards,<br>The BuildMate+ Team</p>
 
             <p><strong>Website:</strong> <a href="http://www.buildmateplus.com">www.buildmateplus.com</a></p>
-            <p><strong>Email:</strong> <a href="mailto:support@buildmateplus.com">support@buildmateplus.com</a></p>
+            <p><strong>Email:</strong> <a href="buildmateplus@gmail.com">support@buildmateplus.com</a></p>
         `
     };
 

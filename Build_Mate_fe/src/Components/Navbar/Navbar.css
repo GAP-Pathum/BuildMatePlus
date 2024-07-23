@@ -1,80 +1,112 @@
+/* CSS for the navbar */
 .navbar {
-    display: flex;
-    justify-content: space-around;
-    padding: 5px 16px;
-    z-index: 100; /* Allow items to wrap to the next line */
-  }
-  
-  .navbar img {
-    width: 80%;
-    max-width: 300px; /* Limit the maximum width of the logo */
-  }
-  
-  .nav-logo {
-    z-index: 10;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 16px;
+  z-index: 100; /* Allow items to wrap to the next line */
 }
 
-.navbar img{
-    width: 200px;
+.navbar img {
+  width: 80%;
+  max-width: 300px; /* Limit the maximum width of the logo */
 }
-.nav-logo{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-right: auto; /* Push the logo to the left */
+
+.nav-logo {
+  z-index: 10;
+}
+
+.navbar img {
+  width: 200px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto; /* Push the logo to the left */
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none; /* Remove default list styles */
+  gap: 30px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: auto; /* Push the menu items to the right */
+  padding: 0; /* Remove default padding */
+}
+
+.nav-menu li {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nav-menu li:last-child {
+  margin-right: 0; /* Remove margin from the last item */
+}
+
+.nav-button {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.nav-button:hover {
+  color: #FF6B00;
+  border-bottom: 2px solid #FF6B00; /* Underline on hover */
+  -moz-transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+/* Active effect */
+.nav-button.active {
+  color: #FF6B00;
+  border-bottom: 2px solid #FF6B00; /* Underline when active */
+  transition: 1s;
+}
+
+.joinbtn,
+.signbtn {
+  height: 35px;
+  width: 100px;
+  border: none;
+  border-radius: 70px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  background-color: #0D113E;
+  color: #ffffff;
+}
+
+.joinbtn:hover,
+.signbtn:hover {
+  background-color: #FF6B00;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
   }
-  
+
   .nav-menu {
-    display: flex;
-    align-items: center;
-    list-style: none; /* Remove default list styles */
-    gap: 30px;
-    color: white;
-    font-size: 15px;
-    font-weight: 500;
-    margin-left: auto; /* Push the menu items to the right */
-    padding: 0; /* Remove default padding */
+    margin-top: 20px; /* Add space between logo and menu on small screens */
+    margin-left: 0; /* Reset margin for small screens */
   }
-  
-  .nav-menu li {
-    font-family: "Poppins", sans-serif;
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  
-  .nav-menu li:last-child {
-    margin-right: 0; /* Remove margin from the last item */
-  }
-  
-  .nav-menu li a {
-    text-decoration: none;
-    color: white;
-  }
-  
-  .joinbtn,
-  .signbtn {
-    height: 35px;
-    width: 100px;
-    border: none;
-    border-radius: 70px;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: "Poppins", sans-serif;
-  }
-  
-  /* Media queries for responsiveness */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column; /* Stack items vertically */
-      align-items: center; /* Center items horizontally */
-    }
-  
-    .nav-menu {
-      margin-top: 20px; /* Add space between logo and menu on small screens */
-      margin-left: 0; /* Reset margin for small screens */
-    }
-  }
-  
+}

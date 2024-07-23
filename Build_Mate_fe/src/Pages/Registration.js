@@ -63,6 +63,7 @@ function Registration() {
 
         let endpoint;
         let redirectPath;
+        const userData = { ...profileInfo };  // Copy user details
 
         switch (profileInfo.userType) {
             case "client":
@@ -71,7 +72,7 @@ function Registration() {
                 break;
             case "professional":
                 endpoint = "http://localhost:8000/api/registerProfessional";
-                redirectPath = "/Pages/Professional";
+                redirectPath = "/Pages/professional";  // Update the redirect path
                 break;
             case "service supplier":
                 endpoint = "http://localhost:8000/api/registerServiceSupplier";
@@ -96,13 +97,28 @@ function Registration() {
 
             if (response.status === 201 && response.data.message === "User registered successfully") {
                 Swal.fire({
-                    icon: "success",
-                    title: "Success",
-                    text: "Information saved successfully",
-                    confirmButtonText: "OK"
-                }).then(() => {
-                    navigate(redirectPath);
-                });
+                    title: "Do you want to save the changes?",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Save",
+                    denyButtonText: `Don't save`
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success",
+                            text: "Information saved successfully",
+                            confirmButtonText: "OK",
+                            footer: "Let's fill some of our details further..."
+                        }).then(() => {
+                            const { firstName, lastName, email } = profileInfo;
+                            navigate(redirectPath, { state: { firstName, lastName, email } });
+                        });
+                    } else if (result.isDenied) {
+                      Swal.fire("Changes are not saved", "", "info");
+                    }
+                  });
             } else {
                 Swal.fire({
                     icon: "error",
@@ -112,14 +128,29 @@ function Registration() {
                 });
             }
         } catch (error) {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: error.response?.data?.message || "Error saving information",
-                confirmButtonText: "OK"
-            });
+            const errorMessage = error.response?.data?.message || "Error saving information";
+            if (errorMessage === "User with this email already exists") {
+                Swal.fire({
+                    icon: "error",
+                    title: "User Exists",
+                    text: "A user with this email already exists. Please log in or use a different email.",
+                    confirmButtonText: "Or",
+                    footer: "Let's fill some of our details further..."
+                }).then(() => {
+                    const { firstName, lastName, email } = profileInfo;
+                    navigate(redirectPath, { state: { firstName, lastName, email } });
+                });
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: errorMessage,
+                    confirmButtonText: "OK"
+                });
+            }
         }
     };
+
 
     const handleEditClick = () => {
         window.scrollTo({
@@ -174,7 +205,8 @@ function Registration() {
                             required
                         />
                     </label>
-                    <label className="reg-form-l1">
+                    <div className="reg-form-l3">
+                        <label>
                         First Name <br/>
                         <input
                             type="text"
@@ -183,8 +215,8 @@ function Registration() {
                             onChange={handleChange}
                             required
                         />
-                    </label>
-                    <label className="reg-form-l1">
+                        </label>
+                        <label className="reg-form-l4">
                         Last Name <br/>
                         <input
                             type="text"
@@ -193,7 +225,9 @@ function Registration() {
                             onChange={handleChange}
                             required
                         />
-                    </label>
+                        </label>
+                    </div>
+                    
                     <label className="reg-form-l2">
                         Birthday<br/>
                         <div className="reg-form-dropdown1">

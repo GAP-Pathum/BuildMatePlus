@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const userRoutes = require("./routes/user");
 const contactRoutes = require("./routes/contact");
 const registrationRoute = require('./routes/registration');
+const professionalRoutes = require('./routes/professionalRoutes');
 
 const app = express();
 const PORT = 8000;
@@ -16,7 +17,8 @@ const PORT = 8000;
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/uploads', express.static('uploads')); // Serve uploaded files
 
 // Routes
 app.use("/api/user", userRoutes);
@@ -25,6 +27,7 @@ app.use('/api/registerClient', registrationRoute);
 app.use('/api/registerProfessional', registrationRoute);
 app.use('/api/registerServiceSupplier', registrationRoute);
 app.use('/api/registerMaterialSupplier', registrationRoute);
+app.use('/api', professionalRoutes);
 
 // MongoDB connection
 mongoose.connect('mongodb://localhost:27017/Build_Mate', {
