@@ -19,8 +19,11 @@ import Suppliers from "./Pages/Supplier";
 import Chat from "./Pages/Chat"; 
 import ChatIcon from "./Pages/ChatIcon";
 import ProfProfile from "./Pages/ProfProfile";
+import MaterialProfile from "./Pages/MaterialProfile"
 import EditProfile from './Pages/EditProfile';
 import ArchProfile from "./Pages/ArchProfile";
+import ChatApp from "./Components/ChatApp/App";
+import PrivacyPolicy from ".//Pages/PrivacyPolicy";
 
 
 function App() {
@@ -46,6 +49,9 @@ function App() {
           <Route path="/Pages/Chat" element={<Chat />} />
           <Route path="/Pages/ArchProfile" element={<ArchProfile />} />
           <Route path="/Pages/ProfProfile" element={<ProfProfile/>}/>
+          <Route path="./Pages/MaterialProfile" element={<MaterialProfile/>}/>
+          <Route path="/Components/ChatApp/App" element={<ChatApp/>}/>
+          <Route path="/Pages/PrivacyPolicy" element={<PrivacyPolicy/>}/>
           {/* <Route path="/Pages/EditProfile" element={<EditProfile/>} /> */}
         </Routes>
         <ChatIcon />

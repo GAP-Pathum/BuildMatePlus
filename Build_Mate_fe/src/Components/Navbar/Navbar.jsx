@@ -24,6 +24,8 @@ const Navbar = () => {
     setFirstName('');
     window.location.reload();
   };
+  
+
 
   return (
     <section className='home1'>

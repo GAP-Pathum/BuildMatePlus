@@ -7,11 +7,11 @@ const ChatIcon = () => {
   const navigate = useNavigate();
 
   const handleChatIconClick = () => {
-    navigate('/Pages/Chat');
+    navigate('../Components/ChatApp/App');
   };
 
   return (
-    <div style={styles.chatIconContainer} onClick={handleChatIconClick}>
+    <div style={styles.chatIconContainer} onClick={handleChatIconClick} >
         <img src={chatIcon} alt="Chat Icon" style={styles.chatIcon} />
       
     </div>

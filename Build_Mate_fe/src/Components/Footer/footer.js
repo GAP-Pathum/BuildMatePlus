@@ -75,7 +75,7 @@ const Footer = () => {
             
             <div className="footer-bottom">
                 <p>© 2024 Buildmate+. All Rights Reserved.</p>
-                <Link to="/privacy-policy">Privacy and Policy</Link>
+                <Link to="/Pages/PrivacyPolicy">Privacy and Policy</Link>
             </div>
         </div>
     );

@@ -3,10 +3,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./Registration.css";
-import materialImg from '../Components/Assets/courier.png';
-import profileImg from '../Components/Assets/profile.png';
-import serviceImg from '../Components/Assets/team.png';
-import profImg from '../Components/Assets/professional.png';
+import uploadIcon from '../Components/Assets/upload.png';
+import profImg from "../Components/Assets/professional.png";
+import serviceImg from "../Components/Assets/team.png";
+import materialImg from "../Components/Assets/courier.png";
+import profileImg from "../Components/Assets/profile.png";
 
 function Registration() {
     const navigate = useNavigate();
@@ -23,8 +24,16 @@ function Registration() {
         birthdayMonth: "",
         birthdayYear: "",
         userType: "",
-        agreeTerms: false
+        agreeTerms: false,
+        profilePic: "", // New field for profile picture
+        linkedin: "",   // New field for LinkedIn profile
+        phone: "",      // New field for phone number
+        location: "",   // New field for location
+        website: "",    // New field for website
+        portfolio: null // New field for portfolio (file upload)
     });
+
+    const [showAdditionalFields, setShowAdditionalFields] = useState(false);
 
     useEffect(() => {
         const email = localStorage.getItem("userEmail");
@@ -41,16 +50,16 @@ function Registration() {
     }, []);
 
     const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
+        const { name, value, type, checked, files } = e.target;
         setProfileInfo(prevState => ({
             ...prevState,
-            [name]: type === "checkbox" ? checked : value
+            [name]: type === "checkbox" ? checked : type === "file" ? files[0] : value
         }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         if (!profileInfo.email || !profileInfo.firstName || !profileInfo.lastName || !profileInfo.gender || !profileInfo.address || !profileInfo.phoneNumber || !profileInfo.country || !profileInfo.birthdayDate || !profileInfo.birthdayMonth || !profileInfo.birthdayYear || !profileInfo.userType || !profileInfo.agreeTerms) {
             Swal.fire({
                 icon: "error",
@@ -60,10 +69,22 @@ function Registration() {
             });
             return;
         }
-
+    
+        if (profileInfo.userType !== "client") {
+            if (!profileInfo.profilePic || !profileInfo.linkedin || !profileInfo.phone || !profileInfo.location || !profileInfo.website || !profileInfo.portfolio) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Please fill in all required additional fields",
+                    confirmButtonText: "OK"
+                });
+                return;
+            }
+        }
+    
         let endpoint;
         let redirectPath;
-
+    
         switch (profileInfo.userType) {
             case "client":
                 endpoint = "http://localhost:8000/api/registerClient";
@@ -90,10 +111,34 @@ function Registration() {
                 });
                 return;
         }
-
+    
+        const formData = new FormData();
+        formData.append("email", profileInfo.email);
+        formData.append("firstName", profileInfo.firstName);
+        formData.append("lastName", profileInfo.lastName);
+        formData.append("gender", profileInfo.gender);
+        formData.append("address", profileInfo.address);
+        formData.append("phoneNumber", profileInfo.phoneNumber);
+        formData.append("country", profileInfo.country);
+        formData.append("birthdayDate", profileInfo.birthdayDate);
+        formData.append("birthdayMonth", profileInfo.birthdayMonth);
+        formData.append("birthdayYear", profileInfo.birthdayYear);
+        formData.append("userType", profileInfo.userType);
+        formData.append("agreeTerms", profileInfo.agreeTerms);
+        formData.append("profilePic", profileInfo.profilePic);
+        formData.append("linkedin", profileInfo.linkedin);
+        formData.append("phone", profileInfo.phone);
+        formData.append("location", profileInfo.location);
+        formData.append("website", profileInfo.website);
+        formData.append("portfolio", profileInfo.portfolio);
+    
         try {
-            const response = await axios.post(endpoint, profileInfo);
-
+            const response = await axios.post(endpoint, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            });
+    
             if (response.status === 201 && response.data.message === "User registered successfully") {
                 Swal.fire({
                     icon: "success",
@@ -120,16 +165,14 @@ function Registration() {
             });
         }
     };
+    
 
-    const handleEditClick = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+    const toggleAdditionalFields = () => {
+        setShowAdditionalFields(!showAdditionalFields);
     };
 
     const currentYear = (new Date()).getFullYear();
-    const pastYears = 50; 
+    const pastYears = 50;
     const years = Array.from(new Array(pastYears), (val, index) => currentYear - index);
 
     const months = [
@@ -237,28 +280,6 @@ function Registration() {
                     </label>
                     <div className="reg-form-l3">
                         <label>
-                            Country<br/>
-                            <input
-                                type="text"
-                                name="country"
-                                value={profileInfo.country}
-                                onChange={handleChange}
-                                required
-                            />
-                        </label>
-                        <label className="reg-form-l4">
-                            Phone Number<br/>
-                            <input
-                                type="text"
-                                name="phoneNumber"
-                                value={profileInfo.phoneNumber}
-                                onChange={handleChange}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div className="reg-form-l3">
-                        <label>
                             Address<br/>
                             <input
                                 type="text"
@@ -282,73 +303,173 @@ function Registration() {
                             </select>
                         </label>
                     </div>
-
-                    <h3 className="reg-formh3">Choose Your Profile Type</h3>
-                    <div className="user-type-buttons">
-                        <input
-                            type="radio"
-                            id="client"
-                            name="userType"
-                            value="client"
-                            checked={profileInfo.userType === "client"}
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="client" className="reg-form-l5">
-                            <img src={profileImg} alt="client" className="reg-image" />
-                            Client
+                    <div className="reg-form-fulll1">
+                        <label className="reg-form-l2">
+                            Phone Number<br/>
+                            <input
+                                type="text"
+                                name="phoneNumber"
+                                value={profileInfo.phoneNumber}
+                                onChange={handleChange}
+                                required
+                            />
                         </label>
-
-                        <input
-                            type="radio"
-                            id="professional"
-                            name="userType"
-                            value="professional"
-                            checked={profileInfo.userType === "professional"}
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="professional" className="reg-form-l5">
-                            <img src={profImg} alt="professional" className="reg-image" />
-                            Professional
-                        </label>
-
-                        <input
-                            type="radio"
-                            id="serviceSupplier"
-                            name="userType"
-                            value="service supplier"
-                            checked={profileInfo.userType === "service supplier"}
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="serviceSupplier" className="reg-form-l5">
-                            <img src={serviceImg} alt="service supplier" className="reg-image" />
-                            Service Supplier
-                        </label>
-
-                        <input
-                            type="radio"
-                            id="materialSupplier"
-                            name="userType"
-                            value="material supplier"
-                            checked={profileInfo.userType === "material supplier"}
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="materialSupplier" className="reg-form-l5">
-                            <img src={materialImg} alt="material supplier" className="reg-image" />
-                            Material Supplier
+                        <label className="reg-form-l2">
+                            Country<br/>
+                            <input
+                                type="text"
+                                name="country"
+                                value={profileInfo.country}
+                                onChange={handleChange}
+                                required
+                            />
                         </label>
                     </div>
-                    <label className="reg-form-l6">
-                        <input
-                            type="checkbox"
-                            name="agreeTerms"
-                            checked={profileInfo.agreeTerms}
-                            onChange={handleChange}
-                            required
-                        />
-                        I agree to the Terms and Conditions
-                    </label>
+                    <h3 className="reg-formh3">Choose Your Profile Type</h3>
+                    <div className="user-type-buttons">
+                            <button
+                                type="button"
+                                className={`reg-type-button ${profileInfo.userType === "client" ? "active" : ""}`}
+                                onClick={() => {
+                                    setProfileInfo(prevState => ({
+                                        ...prevState,
+                                        userType: "client"
+                                    }));
+                                    setShowAdditionalFields(false); // Reset additional fields visibility
+                                }}
+                            >
+                                <label htmlFor="client" className="reg-form-l5">
+                                    <img src={profileImg} alt="client" className="reg-image" />
+                                    Client
+                                </label>
+                            </button>
+                            <button
+                                type="button"
+                                className={`reg-type-button ${profileInfo.userType === "professional" ? "active" : ""}`}
+                                onClick={() => {
+                                    setProfileInfo(prevState => ({
+                                        ...prevState,
+                                        userType: "professional"
+                                    }));
+                                    setShowAdditionalFields(true); // Show additional fields for professional
+                                }}
+                            >
+                                <label htmlFor="professional" className="reg-form-l5">
+                                    <img src={profImg} alt="professional" className="reg-image" />
+                                    Professional
+                                </label>
+                            </button>
+                            <button
+                                type="button"
+                                className={`reg-type-button ${profileInfo.userType === "service supplier" ? "active" : ""}`}
+                                onClick={() => {
+                                    setProfileInfo(prevState => ({
+                                        ...prevState,
+                                        userType: "service supplier"
+                                    }));
+                                    setShowAdditionalFields(true); // Show additional fields for service supplier
+                                }}
+                            >
+                                <label htmlFor="serviceSupplier" className="reg-form-l5">
+                                    <img src={serviceImg} alt="service supplier" className="reg-image" />
+                                    Service Supplier
+                                </label>
+                            </button>
+                            <button
+                                type="button"
+                                className={`reg-type-button ${profileInfo.userType === "material supplier" ? "active" : ""}`}
+                                onClick={() => {
+                                    setProfileInfo(prevState => ({
+                                        ...prevState,
+                                        userType: "material supplier"
+                                    }));
+                                    setShowAdditionalFields(true); // Show additional fields for material supplier
+                                }}
+                            >
+                               <label htmlFor="materialSupplier" className="reg-form-l5">
+                                    <img src={materialImg} alt="material supplier" className="reg-image" />
+                                    Material Supplier
+                                </label>
+                            </button>
+                        </div>
+                    {showAdditionalFields && profileInfo.userType !== "client" && (
+                        <>
+                            <label className="reg-form-l2">
+                                Profile Picture<br/>
+                                <input
+                                    type="file"
+                                    name="profilePic"
+                                    onChange={handleChange}
+                                    accept="image/*"
+                                    required
+                                />
+                            </label>
+                            <label className="reg-form-l2">
+                                Your LinkedIn<br/>
+                                <input
+                                    type="text"
+                                    name="linkedin"
+                                    value={profileInfo.linkedin}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </label>
+                            <label className="reg-form-l2">
+                                Your Phone Number<br/>
+                                <input
+                                    type="text"
+                                    name="phone"
+                                    value={profileInfo.phone}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </label>
+                            <label className="reg-form-l2">
+                                Your Location<br/>
+                                <input
+                                    type="text"
+                                    name="location"
+                                    value={profileInfo.location}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </label>
+                            <label className="reg-form-l2">
+                                Your Website<br/>
+                                <input
+                                    type="text"
+                                    name="website"
+                                    value={profileInfo.website}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </label>
+                            <label className="reg-form-l2">
+                                Portfolio (File Upload)<br/>
+                                <input
+                                    type="file"
+                                    name="portfolio"
+                                    onChange={handleChange}
+                                    accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.jpg,.jpeg,.png"
+                                    required
+                                />
+                            </label>
+                        </>
+                    )}
+                    <div className="checkbox3">
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="agreeTerms"
+                                checked={profileInfo.agreeTerms}
+                                onChange={handleChange}
+                                required
+                            />
+                            I agree to the Terms and Conditions
+                        </label>
+                    </div>
                     <div className="reg-buttons">
-                        <button type="button" onClick={handleEditClick}>Edit</button>
+                        <button type="button" >Edit</button>
                         <button type="submit" className="reg-button-b1">Submit</button>
                     </div>
                 </form>
