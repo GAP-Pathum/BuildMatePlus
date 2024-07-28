@@ -19,10 +19,7 @@ import reviewImg01 from "../Components/Assets/review01.jpeg";
 import reviewImg02 from "../Components/Assets/review02.jpeg";
 import reviewImg03 from "../Components/Assets/review03.jpeg";
 import 'animate.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
-import 'swiper/swiper.css';
-import { Navigation, Pagination } from 'swiper';
+
 
 
 import ScrollTrigger from "react-scroll-trigger";
@@ -119,6 +116,7 @@ const Home = () => {
     const fadeInLeftRef = useRef(null);
 
     useEffect(() => {
+      
       const observer = new IntersectionObserver(
         (entries, observer) => {
           entries.forEach(entry => {
@@ -203,6 +201,7 @@ const Home = () => {
             </div>
           </div>
           <div className='arrow'>
+            
               <img
               className='downarrow' src={seemore} alt='downarrow'
               onClick={pathWindow}
@@ -293,24 +292,24 @@ const Home = () => {
                                   <div className='we-c'>
                                     <img src={propertyImage} alt='property' className='wel-img'/>
                                   <h2 className="we-h">Dream Project Matchmaking</h2>
-                                  <p className="we-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
+                                  <p className="we-p">Connects clients with projects that perfectly align with their vision and requirements, ensuring satisfaction from start to finish.</p>
                                   </div>
                                   <div className='we-c'>
                                     <img src={groupImage} alt='group'className='wel-img'/>
                                   <h2 className="we-h">Streamlined Communication</h2>
-                                  <p className="we-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero</p>
+                                  <p className="we-p">Facilitates efficient and effective communication among all stakeholders, reducing misunderstandings and enhancing collaboration.</p>
                                   </div>
                                 
                                     
                                   <div className='we-c'><img src={viewImage} alt='view'className='wel-img'/>
                                   <h2 className="we-h">Seamless 3D Design Integration</h2>
-                                  <p className="we-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero</p>
+                                  <p className="we-p">Enables easy creation and integration of 3D designs, improving project visualization and planning accuracy.</p>
                                   </div>
 
                                   <div className='we-c'>
                                     <img src={growthImage} alt='growth'className='wel-img'/>
                                   <h2 className="we-h">Transparent Progress Tracking</h2>
-                                  <p className="we-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero</p>
+                                  <p className="we-p">Provides real-time updates on project progress, ensuring transparency and building trust with clients.</p>
                                   </div>
                               </div>
                           </div>
@@ -326,13 +325,13 @@ const Home = () => {
                             <div className="con-1">
                               <img src={reviewImg01} alt="Profile" className="profile-img" style={{ width: '70px' }} />
                               <p className="re">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.
+                              "BuildMate+ has significantly improved our project coordination and execution. The Dream Project Matchmaking feature is fantastic for finding projects that fit our expertise. Streamlined communication has reduced the back-and-forth between team members, making our workflow more efficient. The 3D Design Integration allows us to present detailed plans to clients, enhancing their understanding and satisfaction. Overall, BuildMate+ has been an invaluable tool for our firm."
                               </p>
                               <div className="line-re"></div>
                               <div className="footer-con">
                                 <div className="position">
-                                  <p className="re-name">John Walker</p>
-                                  <p className="re-po">Architecture</p>
+                                  <p className='re-name'>Sophia Williams</p>
+                                  <p className='re-po'>Architect</p>
                                 </div>
                                 <div className="reviewStar">{renderStars(4)}</div>
                               </div>
@@ -341,7 +340,7 @@ const Home = () => {
 
                             <div className='con-1'>
                             <img src={reviewImg02} alt="Image" style={{width:'70px'}} className='profile-img'/>
-                            <p className='re'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.</p>
+                            <p className='re'>"BuildMate+ has greatly improved our project management process. The intuitive 3D Design Integration allows for easy creation and modification of designs, enhancing client presentations. The streamlined communication features ensure our team stays informed, reducing errors. Highly recommend BuildMate+ for engineering teams aiming to boost efficiency and collaboration."</p>
                             <div className='line-re'></div>
                             <div className="footer-con">
                                 <div className="position">
@@ -354,12 +353,12 @@ const Home = () => {
 
                             <div className='con-1'>
                             <img src={reviewImg03} alt="Image" style={{width:'70px'}} className='profile-img'/>
-                            <p className='re'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed.</p>
+                            <p className='re'>"The BuildMate+ platform has revolutionized our project management approach. The seamless integration of 3D designs has made it easier to visualize and plan our projects. The streamlined communication tools ensure that everyone is on the same page, minimizing errors and delays. The transparent progress tracking feature is a favorite among our clients, as it provides real-time updates and fosters trust. I can't imagine managing our projects without BuildMate+."</p>
                             <div className='line-re'></div>
                             <div className="footer-con">
                                 <div className="position">
-                                  <p className="re-name">John Walker</p>
-                                  <p className="re-po">Architecture</p>
+                                  <p className='re-name'>James Anderson</p>
+                                  <p className='re-po'>Project Manager</p>
                                 </div>
                                 <div className="reviewStar">{renderStars(5)}</div>
                               </div>

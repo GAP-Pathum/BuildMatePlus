@@ -64,7 +64,7 @@ export default function Contact() {
         <img className='contact-mimg' src={conta1} alt="Background" />
 
         <div className="contact-white-container">
-          <div className='contact-head'>Let's Connect: <br/><span>Reach Out and Build Together</span></div>
+          <div className='contact-head'>LET'S CONNECT: <br/><span>Reach Out and Build Together</span></div>
           <div className="contact-container">
             <div className="contact-orange-container">
               <div className="contact-head1">Get In Touch</div>

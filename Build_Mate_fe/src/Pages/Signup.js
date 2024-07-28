@@ -83,28 +83,29 @@ function Signup() {
                     
                     <h1 className="head1">Create New Account</h1>
                     <p className="par1">Please fill in your basic info</p>
-
-                    <form onSubmit={submit}>
-                        <div className="signup-firstline">
-                            <input
-                                className="signup-Fname"
-                                type="text"
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
-                                placeholder="First Name"
-                                required
-                            />
-                            <input
-                                className="signup-Lname"
-                                type="text"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
-                                placeholder="Last Name"
-                                required
-                            />
-                        </div>
+                    
+                    <div className="inputs">
+                        <form onSubmit={submit} className="signupForm">
+                            <div className="signupDiv">
+                                <input
+                                        className="signup-Fname"
+                                        type="text"
+                                        value={firstName}
+                                        onChange={(e) => setFirstName(e.target.value)}
+                                        placeholder="First Name"
+                                        required
+                                    />
+                                    <input
+                                        className="signup-Lname"
+                                        type="text"
+                                        value={lastName}
+                                        onChange={(e) => setLastName(e.target.value)}
+                                        placeholder="Last Name"
+                                        required
+                                    /> 
+                            </div>
                         
-                        <div className="row">
+                            <label>Email</label>
                             <input
                                 className="signup-email"
                                 type="email"
@@ -113,8 +114,7 @@ function Signup() {
                                 placeholder="Email"
                                 required
                             />
-                        </div>
-                        <div className="row">
+                            <label>Password</label>
                             <input
                                 className="signup-password"
                                 type="password"
@@ -123,11 +123,11 @@ function Signup() {
                                 placeholder="Password"
                                 required
                             />
-                        </div>
-                        <div className="btn-container">
+                            <div className="btn-container">
                             <button className="btn" type="submit">CREATE ACCOUNT</button>
                         </div>
-                    </form>
+                        </form>
+                    </div>
                     <p className="signup-para2">Already a member ?
                         <Link to="/Pages/Login" className="signup-log">Log In</Link>
                     </p>
