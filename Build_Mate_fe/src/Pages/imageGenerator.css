@@ -1,0 +1,80 @@
+/* General styling */
+.image-generator-container {
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the NewImageGenerator component */
+.new-image-generator-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+/* Title styling */
+.new-image-generator-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form styling */
+.new-image-generator-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input field styling */
+.new-image-generator-container input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Button styling */
+.new-image-generator-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.new-image-generator-container button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.new-image-generator-container button:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+/* Loading text styling */
+.new-image-generator-container p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Image container styling */
+.new-image-container {
+    margin-top: 20px;
+}
+
+/* Image styling */
+.new-image-generator-container img {
+    max-width: 100%;
+    border-radius: 8px;
+}

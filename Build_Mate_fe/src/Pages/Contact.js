@@ -4,6 +4,7 @@ import Navbar from '../Components/Navbar/Navbar';
 import conta1 from '../Components/Assets/conta1.jpg';
 import axios from "axios";
 import Swal from 'sweetalert2';
+import Footer from "../Components/Footer/footer";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -106,6 +107,7 @@ export default function Contact() {
           
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

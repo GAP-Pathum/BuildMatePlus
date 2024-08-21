@@ -7,7 +7,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   
   function handleHomeBack() {
-    navigate("../../Pages/Home"); // Correct path for your route
+    navigate("../../"); // Correct path for your route
   }
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,7 +39,7 @@ const Navbar = () => {
         </div>
 
         <ul className='nav-menu'>
-          <li><NavLink to="/Pages/home" activeClassName="active">Home</NavLink></li>
+          <li><NavLink to="/" activeClassName="active">Home</NavLink></li>
           <li><NavLink to="/Pages/about" activeClassName="active">About</NavLink></li>
           <li><NavLink to="/Pages/projects" activeClassName="active">Projects</NavLink></li>
           <li><NavLink to="/Pages/BlogPage" activeClassName="active">Blogs</NavLink></li>

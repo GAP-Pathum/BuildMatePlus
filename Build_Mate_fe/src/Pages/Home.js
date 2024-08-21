@@ -18,6 +18,9 @@ import viewImage from '../Components/Assets/3d-view(1).png';
 import reviewImg01 from "../Components/Assets/review01.jpeg";
 import reviewImg02 from "../Components/Assets/review02.jpeg";
 import reviewImg03 from "../Components/Assets/review03.jpeg";
+import boxImg01 from "../Components/Assets/BoxImg01.png"
+import boxImg02 from "../Components/Assets/BoxImg02.png";
+import boxImg03 from "../Components/Assets/BoxImg03.png"
 import 'animate.css';
 
 
@@ -215,44 +218,66 @@ const Home = () => {
         <div className='path'>
                       <div className='h1'>
                        <div className='firstbox'id='firstbox'>
-                        <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
-                          <div className='box1'>
-                            <img src={dreamimage} className='dreamimg' alt='Dream' />
-                            <div className='box'>
-                                <h1 className='h1-text'>
-                                    Ready to start building your dream or maintaining your existing construction?
-                                </h1>
-                                <Link to='/Pages/connect'>
-                                    <button className='h1-button'>Build your dream</button>
-                                </Link>
-                            </div></div>
-
+                        <div className='boxCollection1'>
+                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
+                            <div className='box1'>
+                              <img src={boxImg01} className='boxImg01' alt=' '/>
+                              <div className='box'>
+                                  <h3 className='h1-text'>
+                                      Ready to start building your dream or maintaining your existing construction?
+                                  </h3>
+                                  <Link to='/Pages/connect'>
+                                      <button className='h1-button'>Build your dream</button>
+                                  </Link>
+                              </div>
+                              </div>
+                          </div>
+                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
+                            <div className='box1'>
+                              
+                              <div className='box-Right'>
+                                  <h3 className='h1-text-Right'>
+                                      Ready to start building your dream or maintaining your existing construction?
+                                  </h3>
+                                  <Link to='/Pages/connect'>
+                                      <button className='h1-button-Right'>Build your dream</button>
+                                  </Link>
+                              </div>
+                              <img src={women} className='boxImg01' alt=' '/>
+                              </div>
+                          </div>
                         </div>
-                        <div className='animate_box1 animate__animated animate__backInRight' ref={backInRightRef}>
-                           <div className='box2'>
-                            <img src={oppertunityimg} className='dreamimg01' style={{ transform: 'scaleX(-1)', zIndex:'-1',borderRadius:'0 65px 65px 0' }}/>
-                            <div className='box'><h1 className='h2-text' style={{transform:'scaleX(-1)'}}>Ready to take on new projects or find exciting job opportunities in the construction industry? 
-                            </h1>
-                            <Link to="/Pages/Registration" >
-                              <button className='h1-button'  style={{transform:'scaleX(-1)', }}>Explore Opportunities</button>
-                            </Link>
-                            </div>
-                          </div> 
+                        <div className='boxCollection1' style={{marginTop:'5%'}}>
+                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
+                            <div className='box1'>
+                              <img src={boxImg02} className='boxImg01' alt=' '/>
+                              <div className='box'>
+                                  <h3 className='h1-text'>
+                                      Ready to start building your dream or maintaining your existing construction?
+                                  </h3>
+                                  <Link to='/Pages/connect'>
+                                      <button className='h1-button'>Build your dream</button>
+                                  </Link>
+                              </div>
+                              </div>
+                          </div>
+                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
+                            <div className='box1'>
+                              
+                              <div className='box-Right'>
+                                  <h3 className='h1-text-Right'>
+                                      Ready to start building your dream or maintaining your existing construction?
+                                  </h3>
+                                  <Link to='/Pages/connect'>
+                                      <button className='h1-button-Right'>Build your dream</button>
+                                  </Link>
+                              </div>
+                              <img src={boxImg03} className='boxImg01' alt=' '/>
+                              </div>
+                          </div>
+                        </div>
                         
-                        </div>
-                        <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
-                          <div className='box3'>
-                            <img src={dreamimage} className='dreamimg' alt='Dream' />
-                            <div className='box'>
-                                <h1 className='h1-text'>
-                                Ready to join us and showcase your expertise to the world?
-                                </h1>
-                                <Link to='/Pages/Registration'>
-                                    <button className='h1-button'>Be a BuildMate</button>
-                                </Link>
-                            </div></div>
-
-                        </div>  
+                    
                           
                       </div> 
                       <div className='det'>
@@ -365,7 +390,8 @@ const Home = () => {
                             </div>
 
                           </div>
-                          </div>    
+                          </div>  
+                            
                           <Footer/>     
 
                   

@@ -1,11 +1,17 @@
 import React from "react";
 import { useNavigate,Link } from "react-router-dom";
 import "./PrivacyPolicy.css"
+import closeIcon from "../Components/Assets/close.png";
 
 const PrivacyPolicy = () =>{
+    const navigate = useNavigate();
+
+      function handleClose() {
+        navigate("/Pages/Home"); // Navigate to the home page
+    }
     
     return(
-        <div className="privacy-policy">
+        <div className="privacy-policy"><img src={closeIcon} alt="Close" className="close-icon1" onClick={handleClose} />
       <h1>Privacy Policy</h1>
       <p><strong>Effective Date:</strong> [Insert Date]</p>
       <h2>Introduction</h2>
@@ -33,10 +39,10 @@ const PrivacyPolicy = () =>{
       <h2>How We Use Your Information</h2>
       <p>We use the information we collect in various ways, including:</p>
       <ul>
-        <li>To provide, operate, and maintain our services.</li>
-        <li>To improve, personalize, and expand our services.</li>
-        <li>To understand and analyze how you use our services.</li>
-        <li>To develop new products, services, features, and functionalities.</li>
+        <li style={{padding:'1%', textAlign:'left', fontSize:'15px'}}>To provide, operate, and maintain our services.</li>
+        <li style={{padding:'1%', textAlign:'left', fontSize:'15px'}}>To improve, personalize, and expand our services.</li>
+        <li style={{padding:'1%', textAlign:'left', fontSize:'15px'}}>To understand and analyze how you use our services.</li>
+        <li style={{padding:'1%', textAlign:'left', fontSize:'15px'}}>To develop new products, services, features, and functionalities.</li>
       </ul>
     </div>
     );

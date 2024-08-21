@@ -24,14 +24,15 @@ import EditProfile from './Pages/EditProfile';
 import ArchProfile from "./Pages/ArchProfile";
 import ChatApp from "./Components/ChatApp/App";
 import PrivacyPolicy from ".//Pages/PrivacyPolicy";
-
+import ImageGenerator from "./Pages/ImageGenerator";
+import SupConnect from "./Pages/SupConnect";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/Pages/Home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/Pages/Login" element={<Login />} />
           <Route path="/Pages/Signup" element={<Signup />} />
           <Route path="/Pages/About" element={<About />} />
@@ -52,6 +53,8 @@ function App() {
           <Route path="./Pages/MaterialProfile" element={<MaterialProfile/>}/>
           <Route path="/Components/ChatApp/App" element={<ChatApp/>}/>
           <Route path="/Pages/PrivacyPolicy" element={<PrivacyPolicy/>}/>
+          <Route path="/Pages/ImageGenerator" element={<ImageGenerator/>}/>
+          <Route path="/Pages/SupConnect" element={<SupConnect/>}/>
           {/* <Route path="/Pages/EditProfile" element={<EditProfile/>} /> */}
         </Routes>
         <ChatIcon />

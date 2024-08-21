@@ -13,7 +13,7 @@ export default function Connect() {
     navigate('/pages/Architecture');
   };
   const handleFindSuppliersClick = () => {
-    navigate('/pages/Supplier');
+    navigate('/Pages/SupConnect');
   };
 
   return (
@@ -39,7 +39,7 @@ export default function Connect() {
             <div className="orange-container1">
               <div className='para1'>Find the Suppliers for Your Construction</div>
               <div className="connect-02">
-                <button className="con-button" onClick={() => window.location.href = '/Pages/Supplier'}>
+                <button className="con-button" onClick={() => window.location.href = '/Pages/SupConnect'}>
                 Find Suppliers
               </button>
               </div>
