@@ -1,6 +1,7 @@
 .footer {
     font-family: "Poppins", sans-serif;
     background-color: #FF6B00;
+    filter: blur(40%);
     width: 100%;
     display: flex;
     flex-direction: column;
