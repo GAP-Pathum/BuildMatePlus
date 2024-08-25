@@ -88,12 +88,12 @@ function Signup() {
     }
 
     return (
-        <div className="signup01"><img src={closeIcon} alt="Close" className="close-icon" onClick={handleClose} />
+        <div className="signup01"><img src={closeIcon} alt="Close" className="close-icon" style={{filter:'invert(100%)'}} onClick={handleClose} />
             <div className="signup">
                 <div className="signup-locate">
                     <h1 className="head1">Create New Account</h1>
                     <p className="par1">Please fill in your basic info</p>
-                    <div className="inputs">
+                    <div className="inputss">
                         <form onSubmit={submit} className="signupForm">
                             <div className="signupDiv">
                                 <input

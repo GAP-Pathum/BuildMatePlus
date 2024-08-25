@@ -170,7 +170,6 @@ const Home = () => {
                                   Register to join the BuildMate+ community and start your construction journey
                                   </h3>
                                   <Link to='/Pages/Registration'>
-
                                       <button className='h1-button'>Be a BuildMate</button>
                                   </Link>
                               </div>

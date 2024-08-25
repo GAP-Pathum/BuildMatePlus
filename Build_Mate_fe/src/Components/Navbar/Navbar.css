@@ -16,12 +16,20 @@
 
 .navbar img{
     width: 200px;
+    border-radius: 105px;
+    box-shadow: 0 0 60px rgba(67, 67, 67, 0.4);
 }
+
+
 .nav-logo{
     display: flex;
     align-items: center;
     gap: 10px;
     margin-right: auto; /* Push the logo to the left */
+  }
+  .nav-logo:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
   }
   
   .nav-menu {

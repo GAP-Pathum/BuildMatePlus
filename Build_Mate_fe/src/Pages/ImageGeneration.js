@@ -3,6 +3,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import women from '../Components/Assets/Home-women.png';
 import './ImageGeneration.css';  // Import the CSS file
+import Navbar from '../Components/Navbar/Navbar';
+import Footer from '../Components/Footer/footer';
+import aiImage from '../Components/Assets/image (5).png';
 import Swal from 'sweetalert2';
 
 const ImageGeneration = () => {
@@ -41,26 +44,45 @@ const ImageGeneration = () => {
   }, [navigate]);
 
   return (
-    <div className='image-generator'>
+    <div>
+
+    <div className='generator'>
+      <div className='navImage'>
+        <Navbar/>
+      </div>
       
-      <img src={women} alt='woman' className='woman-img' />
-    <div className="image-gen-wrapper">
-      <h1 className='image-head'>Image Generator</h1>
-      <h5>Unleash Your Imagination: Transform Words into Visual Art</h5>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Enter prompt"
-          className="prompt-input-field"
-        />
-        <button type="submit" className="generate-btn">Generate Image</button>
-      </form>
-      {imageUrl && <img src={imageUrl} alt="Generated" className="generated-image" />}
-      {error && <p className="error-message">{error}</p>}
+      <div className='image-generator'>
+        
+        
+      <div className="image-gen-wrapper">
+        <img src={aiImage} alt='woman' className='ai-img' />
+        <div className='image-gen-right'>
+          <h1 className='image-head'>Transform Ideas into Stunning Visuals</h1>
+          <h5>Generate, Customize, and Download Your Images in Seconds</h5>
+          
+            <form onSubmit={handleSubmit}>
+              <div className='imageGenForm'>
+                <input
+                  type="text"
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
+                  placeholder="Enter prompt"
+                  className="prompt-input-field"
+                />
+                <button type="submit" className="generate-btn">Generate Image</button>
+              </div>
+            </form>
+          
+          
+          {imageUrl && <img src={imageUrl} alt="Generated" className="generated-image" />}
+          {error && <p className="error-message">{error}</p>}  
+        </div>
+        
+      </div> 
     </div>
+    
     </div>
+    <Footer/>
     </div>
     
   );
