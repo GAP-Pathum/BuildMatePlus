@@ -7,6 +7,7 @@ import materialImg from '../Components/Assets/courier.png';
 import profileImg from '../Components/Assets/profile.png';
 import serviceImg from '../Components/Assets/team.png';
 import profImg from '../Components/Assets/professional.png';
+import closeIcon from "../Components/Assets/close.png"; // Import close icon
 
 function Registration() {
     const navigate = useNavigate();
@@ -203,10 +204,17 @@ function Registration() {
     ];
 
     const days = Array.from(new Array(31), (val, index) => index + 1);
+    
+    function handleClose() {
+        navigate("/Pages/Home"); // Navigate to the home page
+    }
 
     return (
         <>
         <div className="reg_form">
+        <img src={closeIcon} alt="Close" className="close-icon" style={{filter:'invert(100%)'}} onClick={handleClose} />
+            <div className="reg-form0">
+             
             <div className="reg-form1">
                 <h1 className="reg-formh1">User Account</h1>
                 <div className="line"></div>
@@ -341,7 +349,6 @@ function Registration() {
                             onChange={handleChange}
                         />
                         <label htmlFor="client" className="reg-form-l5">
-                            <img src={profileImg} alt="client" className="reg-image" />
                             Client
                         </label>
 
@@ -354,7 +361,6 @@ function Registration() {
                             onChange={handleChange}
                         />
                         <label htmlFor="professional" className="reg-form-l5">
-                            <img src={profImg} alt="professional" className="reg-image" />
                             Professional
                         </label>
 
@@ -367,7 +373,6 @@ function Registration() {
                             onChange={handleChange}
                         />
                         <label htmlFor="serviceSupplier" className="reg-form-l5">
-                            <img src={serviceImg} alt="service supplier" className="reg-image" />
                             Service Supplier
                         </label>
 
@@ -380,7 +385,6 @@ function Registration() {
                             onChange={handleChange}
                         />
                         <label htmlFor="materialSupplier" className="reg-form-l5">
-                            <img src={materialImg} alt="material supplier" className="reg-image" />
                             Material Supplier
                         </label>
                     </div>
@@ -392,13 +396,14 @@ function Registration() {
                             onChange={handleChange}
                             required
                         />
-                        I agree to the Terms and Conditions
+                        <p className="checkbox">I agree to the Terms and Conditions</p>
                     </label>
                     <div className="reg-buttons">
                         <button type="button" onClick={handleEditClick}>Edit</button>
                         <button type="submit" className="reg-button-b1">Submit</button>
                     </div>
                 </form>
+            </div>   
             </div>
         </div>
         </>

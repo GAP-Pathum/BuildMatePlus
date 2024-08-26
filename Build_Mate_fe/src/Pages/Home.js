@@ -7,8 +7,6 @@ import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/footer';
 import women from '../Components/Assets/Home-women.png';
 import seemore from '../Components/Assets/down-arrow.png';
-import dreamimage from '../Components/Assets/1638943222107.jpeg';
-import oppertunityimg from '../Components/Assets/construction-company-names.jpg';
 import growthImage from '../Components/Assets/growth.png';
 import groupImage from '../Components/Assets/group.png';
 import propertyImage from '../Components/Assets/property.png';
