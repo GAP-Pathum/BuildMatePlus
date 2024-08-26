@@ -7,6 +7,8 @@ import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/footer';
 import women from '../Components/Assets/Home-women.png';
 import seemore from '../Components/Assets/down-arrow.png';
+import dreamimage from '../Components/Assets/1638943222107.jpeg';
+import oppertunityimg from '../Components/Assets/construction-company-names.jpg';
 import growthImage from '../Components/Assets/growth.png';
 import groupImage from '../Components/Assets/group.png';
 import propertyImage from '../Components/Assets/property.png';
@@ -20,6 +22,7 @@ import boxImg02 from "../Components/Assets/BoxImg02.png";
 import boxImg03 from "../Components/Assets/BoxImg03.png"
 import 'animate.css';
 import SearchBar from '../Components/Searchbar/SearchBar';
+import AdSidebar from '../Components/AdSidebar/AdSidebar';
 
 import ScrollTrigger from "react-scroll-trigger";
 import { Link } from 'react-router-dom';
@@ -135,6 +138,7 @@ const Home = () => {
     <>
       <div className='homepage'>
         <Navbar />
+        <AdSidebar />
         <img className='wall' src={homeimg} alt='Background' />
         <div className='head-content'>
           <img src={ic1} alt='icon one' className='ic1' />
@@ -158,7 +162,7 @@ const Home = () => {
           <div className='h1'>
           <div className='firstbox'id='firstbox'>
                         <div className='boxCollection1'>
-                          <div className='animate_box1 animate_animated animate_fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
                             <div className='box1'>
                               <img src={boxImg01} className='boxImg01' alt=' '/>
                               <div className='box'>
@@ -166,12 +170,13 @@ const Home = () => {
                                   Register to join the BuildMate+ community and start your construction journey
                                   </h3>
                                   <Link to='/Pages/Registration'>
+
                                       <button className='h1-button'>Be a BuildMate</button>
                                   </Link>
                               </div>
                               </div>
                           </div>
-                          <div className='animate_box1 animate_animated animate_fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
                             <div className='box1'>
                               
                               <div className='box-Right'>
@@ -187,7 +192,8 @@ const Home = () => {
                           </div>
                         </div>
                         <div className='boxCollection1' style={{marginTop:'5%'}}>
-                          <div className='animate_box1 animate_animated animate_fadeInLeft' ref={fadeInLeftRef}>
+
+                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
                             <div className='box1'>
                               <img src={boxImg02} className='boxImg01' alt=' '/>
                               <div className='box'>
@@ -218,7 +224,8 @@ const Home = () => {
                         
                     
                           
-                      </div>
+                 </div> 
+
             <div className='det'>
               <div className='details-content'>
                 <div className='t1'>
