@@ -214,7 +214,7 @@
 .downarrow{
   align-self: center;
   width: 40px;
-  filter:invert(100%);
+  filter:invert(10%);
   cursor: pointer;
 }
 
