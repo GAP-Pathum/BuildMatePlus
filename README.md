@@ -32,7 +32,7 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/buildmate-plus.git
+   git clone https://github.com/GAP-Pathum/BuildMate_Plus.git
    cd buildmate-plus
 
 
