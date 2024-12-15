@@ -1,0 +1,208 @@
+/* Professional.css */
+.user_profile_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    font-family: "Poppins", sans-serif;
+    padding: 0%;
+    background-color: #FF6B00;
+}
+
+.pro-form {
+    width: 60%;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
+}
+
+.line {
+    border: 0;
+    height: 1px;
+    background-color: #cccccc;
+    margin: 20px 0;
+}
+
+.pro-form-l0 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pro-profilepic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pro-profilepic img {
+    width: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #cccccc;
+    transition: transform 0.3s ease;
+}
+
+.pro-profilepic img:hover {
+    transform: scale(1.1);
+}
+
+.pro-form-l1,
+.pro-form-l3 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.pro-form-l1{
+    margin-left: 10px;
+}
+
+.pro-form-l2 {
+    width: 100%;
+}
+
+.pro-form-l2 label {
+    font-size: 1.25vw;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.pro-form-l2 input,
+.pro-form-l2 select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+.pro-form-l6 {
+    margin-bottom: 20px;
+}
+
+.pro-form-l6 label {
+    font-size: 1.25vw;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.pro-form-l5 {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    resize: none;
+    font-size: 14px;
+}
+
+.pro-button-group {
+    margin-bottom: 20px;
+}
+
+.pro-button-group h3 {
+    font-size: 2.25vw;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.pro-form-button {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.pro-form-button button {
+    width: 32%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #0D113E;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.pro-form-button button.active {
+    background-color: #0D113E;
+    color: white;
+}
+
+.pro-form-button button:hover {
+    background-color: #0D113E;
+    color: white;
+}
+
+.previousJob {
+    margin-bottom: 20px;
+}
+
+.previousJob h3 {
+    font-size: 2.25vw;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.job-file-container {
+    display: flex;
+    align-items: center;
+}
+
+.job-profile-image {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.job-profile-image:hover {
+    transform: scale(1.1);
+}
+
+.pro-form-button1 {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pro-form-button1 button {
+    width: 120px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #0D113E;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.pro-form-button1 button:hover {
+    background-color: #0D113E;
+    color: white;
+}
+
+/* Add styles for radio buttons */
+.pro-form-radio {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.pro-form-radio label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pro-form-radio input[type="radio"] {
+    margin-right: 10px;
+}
