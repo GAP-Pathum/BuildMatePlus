@@ -1,36 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import './AdSidebar.css';  // Optional: For custom styling
+
+import ad1 from '../Assets/ad1.png';
+import ad2 from '../Assets/ad2.png';
+import ad3 from '../Assets/ad3.png';
+
+import './AdSidebar.css'; // Styling for the AdSidebar component
 
 const AdSidebar = () => {
   const [visible, setVisible] = useState(false);
+  const [currentAdIndex, setCurrentAdIndex] = useState(0);
+
+  // Array of mock ads with their relative paths
+  const mockAds = [
+    { id: 1, src: ad1, alt: 'Ad 1' },
+    { id: 2, src: ad2, alt: 'Ad 2' },
+    { id: 3, src: ad3, alt: 'Ad 3' },
+  ];
 
   useEffect(() => {
-    // Set a timeout to show the sidebar after 5 seconds
+    // Show the sidebar after 10 seconds
     const timer = setTimeout(() => {
       setVisible(true);
-    }, 5000);
+    }, 10000);
 
-    return () => clearTimeout(timer); // Clean up the timeout if the component unmounts
+    return () => clearTimeout(timer); // Clean up the timeout
   }, []);
 
   useEffect(() => {
     if (visible) {
-      // Insert the AdSense script
-      const script = document.createElement('script');
-      script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9020312665880795";
-      script.async = true;
-      script.crossOrigin = "anonymous";
-      document.body.appendChild(script);
+      // Rotate ads every 10 seconds
+      const adRotation = setInterval(() => {
+        setCurrentAdIndex((prevIndex) => (prevIndex + 1) % mockAds.length);
+      }, 10000);
 
-      script.onload = () => {
-        try {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (error) {
-          console.error("AdSense script loaded but encountered an error:", error);
-        }
-      };
+      return () => clearInterval(adRotation); // Clean up interval on unmount or visibility change
     }
-  }, [visible]);
+  }, [visible, mockAds.length]);
 
   const handleHideSidebar = () => {
     setVisible(false);
@@ -40,14 +45,15 @@ const AdSidebar = () => {
     visible && (
       <div className="ad-sidebar">
         <button className="hide-button" onClick={handleHideSidebar}>
-          Hide
+          Hide adds
         </button>
-        <ins className="adsbygoogle"
-             style={{ display: 'block', width: '100%', height: 'auto' }}
-             data-ad-client="ca-pub-9020312665880795"
-             data-ad-slot="YOUR_AD_SLOT_ID"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+        <div className="ad-container">
+          <img
+            src={mockAds[currentAdIndex].src}
+            alt={mockAds[currentAdIndex].alt}
+            className="mock-ad"
+          />
+        </div>
       </div>
     )
   );

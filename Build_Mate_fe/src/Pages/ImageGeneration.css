@@ -24,7 +24,7 @@
   background-color: white;
   padding: 40px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  width: 1100px;
+  /* width: 1100px; */
   height: 400px;
   border-radius: 100px;
   display: flex;
@@ -191,7 +191,7 @@
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    width: 400px;
+    width: 1000px;
   }
   
   .image-gen-wrapper h1 {
@@ -228,12 +228,13 @@
     font-size: 16px;
     outline: none;
     transition: border-color 0.3s ease;
+    resize: vertical; /* Allow the input field to be resized vertically */
+    overflow: auto; /* Add scrollbars if the content is too long */
   }
-  
+
   .prompt-input-field:focus {
     border-color: #ff6b00;
   }
-  
   .generate-btn {
     background-color: #ff6b00;
     color: white;

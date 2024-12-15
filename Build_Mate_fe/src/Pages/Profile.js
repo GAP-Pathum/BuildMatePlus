@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import './ArchProfile.css';
+//import './ArchProfile.css';
 import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/footer';
 import leftArrow from '../Components/Assets/left-arrow.png';

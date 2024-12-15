@@ -5,12 +5,14 @@ import abimg from "../Components/Assets/Abh.jpg"
 import aboutimg from "../Components/Assets/About.jpg"
 import Navbar from '../Components/Navbar/Navbar'
 import { Link } from 'react-router-dom';
+import AdSidebar from '../Components/AdSidebar/AdSidebar';
 
 export default function About() {
   return (
     <div>
 
         <Navbar/>
+        <AdSidebar/>
       <div className='home'>
            <img className='wall1' src={abimg} alt='Background' />
            <div className='ab-content'>

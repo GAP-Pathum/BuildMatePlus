@@ -3,10 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./Registration.css";
-import materialImg from '../Components/Assets/courier.png';
-import profileImg from '../Components/Assets/profile.png';
-import serviceImg from '../Components/Assets/team.png';
-import profImg from '../Components/Assets/professional.png';
 import closeIcon from "../Components/Assets/close.png"; // Import close icon
 
 function Registration() {
@@ -43,19 +39,16 @@ function Registration() {
 
     useEffect(() => {
         const token = sessionStorage.getItem('authToken');
-        console.log(token !== '1234');
-    
         if (token !== '1234') {
             Swal.fire({
-              icon: 'warning',
-              title: 'Access denied',
-              
-              footer: "You have to log in first",
-              confirmButtonText: 'OK'
-          });
+                icon: 'warning',
+                title: 'Access denied',
+                footer: "You have to log in first",
+                confirmButtonText: 'OK'
+            });
             navigate('/Pages/home');
-          }
-        }, [navigate]);
+        }
+    }, [navigate]);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -80,7 +73,6 @@ function Registration() {
 
         let endpoint;
         let redirectPath;
-        const userData = { ...profileInfo };  // Copy user details
 
         switch (profileInfo.userType) {
             case "client":
@@ -89,7 +81,7 @@ function Registration() {
                 break;
             case "professional":
                 endpoint = "http://localhost:8000/api/registerProfessional";
-                redirectPath = "/Pages/professional";  // Update the redirect path
+                redirectPath = "/Pages/professional";
                 break;
             case "service supplier":
                 endpoint = "http://localhost:8000/api/registerServiceSupplier";
@@ -119,8 +111,7 @@ function Registration() {
                     showCancelButton: true,
                     confirmButtonText: "Save",
                     denyButtonText: `Don't save`
-                  }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
+                }).then((result) => {
                     if (result.isConfirmed) {
                         Swal.fire({
                             icon: "success",
@@ -133,9 +124,9 @@ function Registration() {
                             navigate(redirectPath, { state: { firstName, lastName, email } });
                         });
                     } else if (result.isDenied) {
-                      Swal.fire("Changes are not saved", "", "info");
+                        Swal.fire("Changes are not saved", "", "info");
                     }
-                  });
+                });
             } else {
                 Swal.fire({
                     icon: "error",
@@ -151,7 +142,7 @@ function Registration() {
                     icon: "warning",
                     title: "User Exists",
                     text: "A user with this email already exists. Please log in or use a different email.",
-                    confirmButtonText: "Or",
+                    confirmButtonText: "OK",
                     footer: "Let's fill some of our details further..."
                 }).then(() => {
                     const { firstName, lastName, email } = profileInfo;
@@ -169,22 +160,18 @@ function Registration() {
     };
 
 
-    const handleEditClick = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+    const handleClose = () => {
+        navigate("/Pages/Home"); // Navigate to the home page
     };
 
     const currentYear = (new Date()).getFullYear();
-    const pastYears = 50; 
-    const years = Array.from(new Array(pastYears), (val, index) => currentYear - index);
+    const pastYears = 50;
+    const years = Array.from(new Array(pastYears), (_, index) => currentYear - index);
 
     const months = [
         { value: "", label: "Select Month" },
         { value: "January", label: "January" },
-        { value: "February", label: "February" },
-        { value: "March", label: "March" },
+    { value: "April", label: "April" },
         { value: "April", label: "April" },
         { value: "May", label: "May" },
         { value: "June", label: "June" },
@@ -204,210 +191,165 @@ function Registration() {
     ];
 
     const days = Array.from(new Array(31), (val, index) => index + 1);
-    
-    function handleClose() {
-        navigate("/Pages/Home"); // Navigate to the home page
-    }
 
     return (
         <>
-        <div className="reg_form">
-        <img src={closeIcon} alt="Close" className="close-icon" style={{filter:'invert(100%)'}} onClick={handleClose} />
-            <div className="reg-form0">
-             
-            <div className="reg-form1">
-                <h1 className="reg-formh1">User Account</h1>
-                <div className="line"></div>
-                <form onSubmit={handleSubmit} className="reg-form-label">
-                    <label className="reg-form-l1">
-                        Email <br/>
-                        <input
-                            type="email"
-                            name="email"
-                            value={profileInfo.email}
-                            onChange={handleChange}
-                            readOnly
-                            required
-                        />
-                    </label>
-                    <div className="reg-form-l3">
-                        <label>
-                        First Name <br/>
-                        <input
-                            type="text"
-                            name="firstName"
-                            value={profileInfo.firstName}
-                            onChange={handleChange}
-                            required
-                        />
-                        </label>
-                        <label className="reg-form-l4">
-                        Last Name <br/>
-                        <input
-                            type="text"
-                            name="lastName"
-                            value={profileInfo.lastName}
-                            onChange={handleChange}
-                            required
-                        />
-                        </label>
+            <div className="reg_form">
+                <img src={closeIcon} alt="Close" className="close-icon" style={{ filter: 'invert(100%)' }} onClick={handleClose} />
+                    <div className="reg-form1">
+                        <h1 className="reg-formh1">User Account</h1>
+                        <div className="line"></div>
+                        <form onSubmit={handleSubmit} className="reg-form-label">
+                            <label className="reg-form-l1">
+                                Email <br />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={profileInfo.email}
+                                    onChange={handleChange}
+                                    readOnly
+                                    required
+                                />
+                            </label>
+                            <div className="reg-form-l3">
+                                <label>
+                                    First Name <br />
+                                    <input
+                                        type="text"
+                                        name="firstName"
+                                        value={profileInfo.firstName}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </label>
+                                <label className="reg-form-l4">
+                                    Last Name <br />
+                                    <input
+                                        type="text"
+                                        name="lastName"
+                                        value={profileInfo.lastName}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </label>
+                            </div>
+                            <label className="reg-form-l2">
+                                Birthday<br />
+                                <div className="reg-form-dropdown1">
+                                    <select
+                                        name="birthdayYear"
+                                        value={profileInfo.birthdayYear}
+                                        onChange={handleChange}
+                                        required
+                                    >
+                                        <option value="" disabled>Select Year</option>
+                                        {years.map((year, index) => (
+                                            <option key={index} value={year}>{year}</option>
+                                        ))}
+                                    </select>
+                                    <select
+                                        name="birthdayMonth"
+                                        value={profileInfo.birthdayMonth}
+                                        onChange={handleChange}
+                                        required
+                                    >
+                                        {months.map((month, index) => (
+                                            <option key={index} value={month.value}>{month.label}</option>
+                                        ))}
+                                    </select>
+                                    <select
+                                        name="birthdayDate"
+                                        value={profileInfo.birthdayDate}
+                                        onChange={handleChange}
+                                        required
+                                    >
+                                        <option value="" disabled>Select Date</option>
+                                        {days.map((day, index) => (
+                                            <option key={index} value={day}>{day}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </label>
+                            <div className="reg-form-l3">
+                                <label>
+                                    Country<br />
+                                    <input
+                                        type="text"
+                                        name="country"
+                                        value={profileInfo.country}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </label>
+                                <label className="reg-form-l4">
+                                    Phone Number <br />
+                                    <input
+                                        type="tel"
+                                        name="phoneNumber"
+                                        value={profileInfo.phoneNumber}
+                                        onChange={handleChange}
+                                        pattern="[0-9]{10}"
+                                        required
+                                    />
+                                </label>
+                            </div>
+                            <label>
+                                Gender<br />
+                                <select
+                                    name="gender"
+                                    value={profileInfo.gender}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    {genders.map((gender, index) => (
+                                        <option key={index} value={gender.value}>{gender.label}</option>
+                                    ))}
+                                </select>
+                            </label>
+                            <label>
+                                Address<br />
+                                <input
+                                    type="text"
+                                    name="address"
+                                    value={profileInfo.address}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </label>
+                            <label>
+                                Account Type<br />
+                                <select
+                                    name="userType"
+                                    value={profileInfo.userType}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    <option value="" disabled>Select an account type</option>
+                                    <option value="client">Client</option>
+                                    <option value="professional">Professional</option>
+                                    <option value="service supplier">Service Supplier</option>
+                                    <option value="material supplier">Material Supplier</option>
+                                </select>
+                            </label>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="agreeTerms"
+                                    checked={profileInfo.agreeTerms}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                I agree to the terms and conditions
+                            </label>
+                            <div className="reg-btn-container">
+                                <button type="submit">Submit</button>
+                            </div>
+                        </form>
                     </div>
-                    
-                    <label className="reg-form-l2">
-                        Birthday<br/>
-                        <div className="reg-form-dropdown1">
-                            <select
-                                name="birthdayYear"
-                                value={profileInfo.birthdayYear}
-                                onChange={handleChange}
-                                required
-                            >
-                                <option value="" disabled>Select Year</option>
-                                {years.map((year, index) => (
-                                    <option key={index} value={year}>{year}</option>
-                                ))}
-                            </select>
-                            <select
-                                name="birthdayMonth"
-                                value={profileInfo.birthdayMonth}
-                                onChange={handleChange}
-                                required
-                            >
-                                {months.map((month, index) => (
-                                    <option key={index} value={month.value}>{month.label}</option>
-                                ))}
-                            </select>
-                            <select
-                                name="birthdayDate"
-                                value={profileInfo.birthdayDate}
-                                onChange={handleChange}
-                                required
-                            >
-                                <option value="" disabled>Select Date</option>
-                                {days.map((day, index) => (
-                                    <option key={index} value={day}>{day}</option>
-                                ))}
-                            </select>
-                        </div>
-                    </label>
-                    <div className="reg-form-l3">
-                        <label>
-                            Country<br/>
-                            <input
-                                type="text"
-                                name="country"
-                                value={profileInfo.country}
-                                onChange={handleChange}
-                                required
-                            />
-                        </label>
-                        <label className="reg-form-l4">
-                            Phone Number<br/>
-                            <input
-                                type="text"
-                                name="phoneNumber"
-                                value={profileInfo.phoneNumber}
-                                onChange={handleChange}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div className="reg-form-l3">
-                        <label>
-                            Address<br/>
-                            <input
-                                type="text"
-                                name="address"
-                                value={profileInfo.address}
-                                onChange={handleChange}
-                                required
-                            />
-                        </label>
-                        <label className="reg-form-l4">
-                            Gender<br/>
-                            <select
-                                name="gender"
-                                value={profileInfo.gender}
-                                onChange={handleChange}
-                                required
-                            >
-                                {genders.map((gender, index) => (
-                                    <option key={index} value={gender.value}>{gender.label}</option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-
-                    <h3 className="reg-formh3">Choose Your Profile Type</h3>
-                    <div className="user-type-buttons">
-                        <input
-                            type="radio"
-                            id="client"
-                            name="userType"
-                            value="client"
-                            checked={profileInfo.userType === "client"}
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="client" className="reg-form-l5">
-                            Client
-                        </label>
-
-                        <input
-                            type="radio"
-                            id="professional"
-                            name="userType"
-                            value="professional"
-                            checked={profileInfo.userType === "professional"}
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="professional" className="reg-form-l5">
-                            Professional
-                        </label>
-
-                        <input
-                            type="radio"
-                            id="serviceSupplier"
-                            name="userType"
-                            value="service supplier"
-                            checked={profileInfo.userType === "service supplier"}
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="serviceSupplier" className="reg-form-l5">
-                            Service Supplier
-                        </label>
-
-                        <input
-                            type="radio"
-                            id="materialSupplier"
-                            name="userType"
-                            value="material supplier"
-                            checked={profileInfo.userType === "material supplier"}
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="materialSupplier" className="reg-form-l5">
-                            Material Supplier
-                        </label>
-                    </div>
-                    <label className="reg-form-l6">
-                        <input
-                            type="checkbox"
-                            name="agreeTerms"
-                            checked={profileInfo.agreeTerms}
-                            onChange={handleChange}
-                            required
-                        />
-                        <p className="checkbox">I agree to the Terms and Conditions</p>
-                    </label>
-                    <div className="reg-buttons">
-                        <button type="button" onClick={handleEditClick}>Edit</button>
-                        <button type="submit" className="reg-button-b1">Submit</button>
-                    </div>
-                </form>
-            </div>   
             </div>
-        </div>
-        </>
-    );
-}
+            </>
+        );
+    }
+
 
 export default Registration;

@@ -8,6 +8,7 @@ import Safety from "../Components/Assets/Safety.jpg";
 import Conference from "../Components/Assets/Conference.jpg";
 import Greenbuild from "../Components/Assets/Greenbuild.jpg";
 import Innovation from "../Components/Assets/Innovation.jpg";
+import AdSidebar from '../Components/AdSidebar/AdSidebar';
 
 import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/footer';
@@ -16,7 +17,7 @@ const BlogPage = () => {
     return (
       <div>
        <Navbar/> 
-      
+        <AdSidebar/>
       <img className='pro-mimg' src={blogimg} alt='Background'/>
       <div className='pro-content'>
         <h1 className='pro-topic'>Blogs</h1>
