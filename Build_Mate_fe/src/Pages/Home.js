@@ -152,7 +152,7 @@ const Home = () => {
             <SearchBar />
             <div className='arrow'>
               <img
-                className='downarrow' src={seemore} alt='downarrow'
+                className='downarrow animate__animated animate__infinite animate__bounce' src={seemore} alt='downarrow'
                 onClick={pathWindow}
               />
             </div>
@@ -160,7 +160,7 @@ const Home = () => {
         </div>
         <div className='path'>
           <div className='h1'>
-          <div className='firstbox'id='firstbox'>
+              <div className='firstbox'id='firstbox'>
                         <div className='boxCollection1'>
                           <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
                             <div className='box1'>
@@ -170,13 +170,12 @@ const Home = () => {
                                   Register to join the BuildMate+ community and start your construction journey
                                   </h3>
                                   <Link to='/Pages/Registration'>
-
                                       <button className='h1-button'>Be a BuildMate</button>
                                   </Link>
                               </div>
                               </div>
                           </div>
-                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='animate_box1 animate__animated animate__fadeInRight' ref={backInRightRef}>
                             <div className='box1'>
                               
                               <div className='box-Right'>
@@ -206,7 +205,7 @@ const Home = () => {
                               </div>
                               </div>
                           </div>
-                          <div className='animate_box1 animate_animated animate_fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='animate_box1 animate__animated animate__fadeInRight' ref={backInRightRef}>
                             <div className='box1'>
                               
                               <div className='box-Right'>
@@ -220,10 +219,7 @@ const Home = () => {
                               <img src={boxImg03} className='boxImg01' alt=' '/>
                               </div>
                           </div>
-                        </div>
-                        
-                    
-                          
+                        </div>        
                  </div> 
 
             <div className='det'>
@@ -290,7 +286,7 @@ const Home = () => {
                 <p className="re">
                   "BuildMate+ has significantly improved our project coordination and execution. The Dream Project Matchmaking feature is fantastic for finding projects that fit our expertise. Streamlined communication has reduced the back-and-forth between team members, making our workflow more efficient. The 3D Design Integration allows us to present detailed plans to clients, enhancing their understanding and satisfaction. Overall, BuildMate+ has been an invaluable tool for our firm."
                 </p>
-                <div className="line-re"></div>
+                <div className='line-re'></div>
                 <div className="footer-con">
                   <div className="position">
                     <p className='re-name'>Sophia Williams</p>
