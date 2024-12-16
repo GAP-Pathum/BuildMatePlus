@@ -6,6 +6,7 @@ import aboutimg from "../Components/Assets/About.jpg"
 import Navbar from '../Components/Navbar/Navbar'
 import { Link } from 'react-router-dom';
 import AdSidebar from '../Components/AdSidebar/AdSidebar';
+import SubscribePopup from '../Components/Subscribe/Sub';
 
 export default function About() {
   return (
@@ -39,7 +40,9 @@ export default function About() {
         </div>
         <p className='last'>Discover Our Ongoing and Completed </p>
         <p className='last2'>Projects : <span class="highlight"><Link to="/Pages/Projects">Watch Out</Link></span></p>
-        <Footer/>   
+
+        <SubscribePopup />
+        <Footer/> 
   </div>
   )
 }
