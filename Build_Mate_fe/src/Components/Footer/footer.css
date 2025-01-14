@@ -59,6 +59,7 @@
 .contact-detail {
     display: flex;
     align-items: center;
+    text-align: left;
     margin-top: 5%;
     justify-content: flex-start;
 }

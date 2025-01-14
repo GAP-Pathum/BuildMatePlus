@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './ImageGeneration.css'; // Import the CSS file
@@ -6,6 +6,7 @@ import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/footer';
 import aiImage from '../Components/Assets/image (5).png';
 import Swal from 'sweetalert2';
+import Subscribe from '../Components/Subscribe/Sub';
 
 const ImageGeneration = () => {
   const [prompt, setPrompt] = useState('');
@@ -52,6 +53,16 @@ const ImageGeneration = () => {
     }
   }, [navigate]);
 
+  const textAreaRef = useRef(null);
+
+  // Adjust height of textarea as user types
+  useEffect(() => {
+    if (textAreaRef.current) {
+      textAreaRef.current.style.height = "auto"; // Reset height before calculating new height
+      textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`; // Set height to content height
+    }
+  }, [prompt]);
+
   if (loading) {
     return (
       <div className="loader-container">
@@ -65,6 +76,7 @@ const ImageGeneration = () => {
   return (
     <div>
       <div className='generator'>
+        <Subscribe/>
         <div className='navImage'>
           <Navbar />
         </div>
@@ -84,13 +96,14 @@ const ImageGeneration = () => {
 
                 <form onSubmit={handleSubmit}>
                   <div className='imageGenForm'>
-                    <input
-                      type="text"
-                      value={prompt}
-                      onChange={(e) => setPrompt(e.target.value)}
-                      placeholder="Enter prompt"
-                      className="prompt-input-field"
-                    />
+                  <textarea
+                    ref={textAreaRef}
+                    value={prompt}
+                    onChange={(e) => setPrompt(e.target.value)}  // Updates `prompt` state as user types
+                    placeholder="Enter prompt"
+                    className="prompt-input-field"
+                    style={{ resize: "none", overflow: "hidden" }} // Disables resizing and hides overflow
+                  />
                     <button type="submit" className="generate-btn">Generate Image</button>
                   </div>
                 </form>

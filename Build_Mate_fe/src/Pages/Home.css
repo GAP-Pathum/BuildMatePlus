@@ -13,14 +13,19 @@
   width: 100%;
   box-sizing: border-box;
 }
-.sub-head-content{
+.sub-head-content {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   width: 100%;
   box-sizing: border-box;
+  background-image: linear-gradient(#ffffff, rgba(255, 255, 255, 0.4)), url('../Components/Assets/bg01.png'); /* Replace with the actual path to your image */
+  background-size: cover; /* Ensures the image covers the entire background */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
 }
+
 .wall {
   filter: brightness(30%);
   position: absolute;
@@ -208,7 +213,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5%;
+  margin-top: 4%;
 
 }
 .downarrow{
@@ -216,6 +221,7 @@
   width: 40px;
   filter:invert(10%);
   cursor: pointer;
+  margin-top: 5%;
 }
 
 .h2-img{
@@ -260,15 +266,29 @@
 .firstbox{
   padding: 5% 10% ;
   max-height: 10%;
+
 }
 .box1{
   display: flex;
-  align-items: flex-end;
-  margin: 0 5%;
-  flex-direction: row;
-  border-radius: 65px;
+  align-items: center;
+  flex-direction: column;
+  width: 260px;
+  padding-top: 10%;
+  padding-bottom: 5%;
+  border-radius: 30px;
   box-shadow: 0 0 40px rgba(67, 67, 67, 0.7);
-
+}
+.btn1{
+  width: 50%;
+}
+.btn2{
+  height:300px;
+}
+.btn3{
+  height:300px;
+}
+.btn4{
+  height: 300px;
 }
 .boxImg01{
   height: 300px;
@@ -276,7 +296,7 @@
 .box3{
   display: flex;
   overflow: hidden;
-  
+  width: 70%;
   margin: 3% auto auto auto;
   border-radius: 65px;
   box-shadow: 0 0 40px rgba(67, 67, 67, 0.4);
@@ -297,40 +317,48 @@
 .box {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  margin-top: 5%;
   margin-bottom: 5%;
-  width: 120%;
-  padding: 0 10% 0 0;
+  width: 100%;
   color: #ffffff;
 }
 .box-Right {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  margin-top: 5%;
   margin-bottom: 5%;
-  width: 120%;
-  padding: 0 0 0 10%;
+  width: 100%;
   color: #ffffff;
 }
 .boxCollection1{
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 
 }
 .h1-text{
+  font-weight: 400;
   text-transform: capitalize;
   color: black;
-  text-align: right;
-  font-size: 1.0 vw;
-  width: 95%;
-  font-size: 1.0vw;
-  line-height: 25px;
+  text-align: center;
+  font-size: 1.1vw;
+  line-height: 20px;
+  width: 80%;
+  padding-top: 5%;
   
 }
 .h1-text-Right{
+  font-weight: 400;
   text-transform: capitalize;
   color: black;
-  text-align: left;
-  font-size: 1.0 vw;
+  text-align: center;
+  font-size: 1.1vw;
+  line-height: 20px;
+  width: 80%;
+  padding-top: 5%;
   
 }
 .h1-button{
@@ -441,8 +469,8 @@
 
 .p-t1{
   color: black;
-  font-size: 150%;
-  font-weight: 700;
+  font-size: 120%;
+  font-weight: 500;
   margin: auto;
 }
 
@@ -467,8 +495,9 @@
 .wel-p{
   color: black;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   margin: auto;
+  line-height: 25px;
 }
 
 /* styles.css */
@@ -491,17 +520,19 @@
   flex-direction: column;
     align-items: center;
     margin: auto;
-    width: 17%;
+    width: 20%;
 }
 .we-h {
   font-size: 18px; /* Adjust as needed */
   color: black;
   text-align: center;
   margin: auto;
+  line-height: 20px;
 }
 
 .we-p{
-  font-size: 14px; /* Adjust as needed */
+  padding-top: 3%;
+  font-size: 11px; /* Adjust as needed */
   text-align: center;
   color:black;
 }
@@ -1081,3 +1112,37 @@
     }
 }
 
+/* Fade In Left Animation */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade In Right Animation */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation Classes */
+.animate__fadeInLeft {
+  animation: fadeInLeft 1s ease-out forwards;
+  animation-delay: 5s; /* 5-second delay */
+}
+
+.animate__fadeInRight {
+  animation: fadeInRight 1s ease-out forwards;
+  animation-delay: 5s; /* 5-second delay */
+}

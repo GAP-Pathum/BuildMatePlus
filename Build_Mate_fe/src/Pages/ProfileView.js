@@ -61,10 +61,10 @@ const ProfileView = () => {
     name: 'Your Name',
     profession: 'Your Profession',
     email: 'Your Email',
-    location: 'Your Location',
-    phone: 'Your Phone Number',
+    workPlace: 'Your Location',
+    phoneNumber: 'Your Phone Number',
     linkedin: 'Your LinkedIn',
-    website: 'Your Website',
+    weblink: 'Your Website',
     about: 'Short bio about yourself',
   };
 
@@ -97,15 +97,15 @@ const ProfileView = () => {
           </div>
           <div className='pro-links'>
             <img src={Phone} alt='phone' className='pro-Icon' />
-            <p>{profile.phone || <span className="default-text">{defaultText.phone}</span>}</p>
+            <p>{profile.phoneNumber || <span className="default-text">{defaultText.phoneNumber}</span>}</p>
           </div>
           <div className='pro-links'>
             <img src={gps} alt='location' className='pro-Icon' />
-            <p>{profile.location || <span className="default-text">{defaultText.location}</span>}</p>
+            <p>{profile.workPlace || <span className="default-text">{defaultText.workPlace}</span>}</p>
           </div>
           <div className='pro-links'>
             <img src={web} alt='website' className='pro-Icon' />
-            <p>{profile.website || <span className="default-text">{defaultText.website}</span>}</p>
+            <p>{profile.weblink || <span className="default-text">{defaultText.weblink}</span>}</p>
           </div>
           <div className='pro-bio'>
             <p>{profile.bio || <span className="default-text">{defaultText.about}</span>}</p>

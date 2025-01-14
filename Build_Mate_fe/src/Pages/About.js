@@ -18,7 +18,7 @@ export default function About() {
            <img className='wall1' src={abimg} alt='Background' />
            <div className='ab-content'>
              <h1 className='ab-topic'>About Us</h1>
-             <p className='ab-subtopic'>Crafting Dreams, Building Futures:<br/><span class="larger">Discover Our Story at Buildmate+</span></p>
+             <p className='pro-subtopic'>Crafting Dreams, Building Futures:<br/><span class="larger">Discover Our Story at Buildmate+</span></p>
             </div>
          </div>
          <h1 className='ab-q'>What is BuildMate+ ?</h1>

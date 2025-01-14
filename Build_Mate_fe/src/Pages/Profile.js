@@ -34,7 +34,7 @@ const Profile = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const location = useLocation();
-  const profileId = location.state?.id; // Get the ID from location state
+  const profileId = location.state?.id;
 
   useEffect(() => {
     const fetchProfileData = async () => {
