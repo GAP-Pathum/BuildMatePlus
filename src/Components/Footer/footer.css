@@ -59,6 +59,7 @@
 .contact-detail {
     display: flex;
     align-items: center;
+    text-align: left;
     margin-top: 5%;
     justify-content: flex-start;
 }
@@ -86,7 +87,8 @@
 }
 
 .footer-bottom a {
-    color: #007bff;
+    /* color: #007bff; */
+    color: #ffffff;
     text-decoration: none;
     margin-left: 1em;
 }

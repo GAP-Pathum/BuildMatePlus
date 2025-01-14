@@ -2,7 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://GAP-Pathum.github.io/BuildMate_Plus/Build_Mate_fe",
   "dependencies": {
     "@ant-design/icons": "^5.3.7",
     "@babel/preset-env": "^7.24.4",
@@ -16,13 +15,13 @@
     "animate.css": "^4.1.1",
     "axios": "^1.7.2",
     "emoji-picker-react": "^4.11.1",
-    "firebase": "^9.20.0",
+    "firebase": "^11.1.0",
     "install": "^0.13.0",
     "jwt-decode": "^3.1.2",
     "npm": "^10.7.0",
     "react": "^18.2.0",
     "react-adsense": "^0.1.0",
-    "react-chat-engine": "^1.11.28",
+    "react-chat-engine": "^0.1.0",
     "react-countup": "^6.5.3",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
@@ -30,17 +29,16 @@
     "react-scroll-trigger": "^0.6.14",
     "react-toastify": "^10.0.5",
     "styled-components": "^6.1.11",
-    "sweetalert2": "^11.11.0",
+    "sweetalert2": "^11.6.13",
     "web-vitals": "^2.1.4",
+    "webpack": "^5.97.1",
     "zustand": "^4.5.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -61,7 +59,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "gh-pages": "^6.1.1"
+    "ajv": "^6.12.6",
+    "ajv-keywords": "^3.5.2"
   }
 }

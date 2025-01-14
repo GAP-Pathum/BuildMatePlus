@@ -42,44 +42,83 @@ import ppwh6 from "../Components/Assets/pro-wh6.jpeg";
 
 
 const Projects = () => {
-  const [activeButton, setActiveButton] = useState(null);
-  const [buttonText, setButtonText] = useState('');
-  const [activeDetailButton, setActiveDetailButton] = useState(null);
+     const [projects, setProjects] = useState([]); // All projects
+     const [filteredProjects, setFilteredProjects] = useState([]); // Filtered projects
+     const [searchQuery, setSearchQuery] = useState(''); // Search text
+     const [activeCategory, setActiveCategory] = useState('All'); // Filter by project type
+     
+     const navigate = useNavigate();
 
-  const scrollRefs = [useRef(), useRef(), useRef(), useRef(), useRef()];
+     const categories = [
+       'All',
+       'Single Family Homes',
+       'Multi-Unit Dwellings',
+       'Retail Spaces',
+       'Office Spaces',
+       'Warehouses',
+     ];
+   
+     const mockProjects = [
+    // Single Family Homes
+    { id: 1, name: "Modern Farmhouse Dream", type: "Single Family Homes", progress: "70%", cost: "2.5Cr", image: pp1, date: "March 07, 2024" },
+    { id: 2, name: "Serenity Springs Residence", type: "Single Family Homes", progress: "73%", cost: "1.0Cr", image: pp2, date: "April 18, 2024" },
+    { id: 3, name: "Sunset Ridge Chalet", type: "Single Family Homes", progress: "67%", cost: "2.1Cr", image: pp3, date: "June 22, 2024" },
+    { id: 4, name: "Bluebird Meadow Homestead", type: "Single Family Homes", progress: "87%", cost: "1.5Cr", image: pp5, date: "March 01, 2024" },
+    { id: 5, name: "Harmony Hill House", type: "Single Family Homes", progress: "75%", cost: "1.8Cr", image: pp8, date: "March 12, 2024" },
+    { id: 6, name: "Willowbrook Cottage", type: "Single Family Homes", progress: "85%", cost: "2.0Cr", image: pp9, date: "March 20, 2024" },
 
-  const handleButtonClick = (buttonIndex, text) => {
-    setActiveButton(buttonIndex);
-    setButtonText(text);
-    scrollRefs[buttonIndex].current.scrollIntoView({ behavior: 'smooth' });
-  };
+    // Multi-Unit Dwellings
+    { id: 7, name: "Collective Haven Residences", type: "Multi-Unit Dwellings", progress: "82%", cost: "1.8Cr", image: ppmu1, date: "March 10, 2024" },
+    { id: 8, name: "Community Comfort Homes", type: "Multi-Unit Dwellings", progress: "75%", cost: "2.0Cr", image: ppmu2, date: "March 27, 2024" },
+    { id: 9, name: "Village Green Residences", type: "Multi-Unit Dwellings", progress: "80%", cost: "1.5Cr", image: ppmu3, date: "March 01, 2024" },
+    { id: 10, name: "Family Retreat Apartments", type: "Multi-Unit Dwellings", progress: "90%", cost: "2.3Cr", image: ppmu4, date: "March 15, 2024" },
+    { id: 11, name: "Serene Sanctuaries", type: "Multi-Unit Dwellings", progress: "88%", cost: "2.6Cr", image: ppmu5, date: "April 05, 2024" },
+    { id: 12, name: "Tranquil Tower Residences", type: "Multi-Unit Dwellings", progress: "76%", cost: "1.9Cr", image: ppmu6, date: "April 10, 2024" },
 
-  const handleDetailButtonClick = (buttonIndex) => {
-    setActiveDetailButton(buttonIndex);
-  };
+    // Retail Spaces
+    { id: 13, name: "Retail Hub Downtown", type: "Retail Spaces", progress: "85%", cost: "1.7Cr", image: pprs1, date: "March 09, 2024" },
+    { id: 14, name: "Vintage Vogue Emporium", type: "Retail Spaces", progress: "78%", cost: "2.2Cr", image: pprs2, date: "March 12, 2024" },
+    { id: 15, name: "Urban Chic Haven", type: "Retail Spaces", progress: "80%", cost: "2.0Cr", image: pprs3, date: "March 14, 2024" },
+    { id: 16, name: "Coastal Charm Market", type: "Retail Spaces", progress: "82%", cost: "2.1Cr", image: pprs4, date: "April 02, 2024" },
+    { id: 17, name: "Rustic Retreat Boutique", type: "Retail Spaces", progress: "79%", cost: "1.9Cr", image: pprs5, date: "April 07, 2024" },
+    { id: 18, name: "Modern Luxe Mall", type: "Retail Spaces", progress: "81%", cost: "2.3Cr", image: pprs6, date: "April 12, 2024" },
 
-  const navigate = useNavigate();
-
-  
-  useEffect(() => {
-    const token = sessionStorage.getItem('authToken');
-    console.log(token !== '1234');
-
-    if (token !== '1234') {
-     Swal.fire({
-       icon: 'warning',
-       title: 'Access denied',
-       
-       footer: "You have to log in first",
-       confirmButtonText: 'OK'
-   });
-     navigate('/Pages/home');
-   }
-     }, [navigate]);
- 
-
-  return (
-    <div style={{position: 'relative'}}>
+    // Warehouses
+    { id: 19, name: "Industrial Bliss Depot", type: "Warehouses", progress: "88%", cost: "2.0Cr", image: ppwh1, date: "April 07, 2024" },
+    { id: 20, name: "Vintage Vault Haven", type: "Warehouses", progress: "79%", cost: "2.5Cr", image: ppwh2, date: "April 10, 2024" },
+    { id: 21, name: "Prestige Place Depot", type: "Warehouses", progress: "81%", cost: "2.6Cr", image: ppwh3, date: "April 15, 2024" },
+    { id: 22, name: "Rustic Charm Warehouse", type: "Warehouses", progress: "84%", cost: "2.1Cr", image: ppwh4, date: "April 18, 2024" },
+    { id: 23, name: "Timeless Treasure Depot", type: "Warehouses", progress: "86%", cost: "2.3Cr", image: ppwh5, date: "April 22, 2024" },
+    { id: 24, name: "Contemporary Storage Hub", type: "Warehouses", progress: "90%", cost: "2.8Cr", image: ppwh6, date: "April 25, 2024" },
+     ];
+   
+     useEffect(() => {
+       setProjects(mockProjects);
+       setFilteredProjects(mockProjects);
+     }, []);
+   
+     const handleSearchChange = (e) => {
+       setSearchQuery(e.target.value);
+       filterProjects(activeCategory, e.target.value);
+     };
+   
+     const handleCategoryChange = (category) => {
+       setActiveCategory(category);
+       filterProjects(category, searchQuery);
+     };
+   
+     const filterProjects = (category, query) => {
+       const lowerCaseQuery = query.toLowerCase();
+       const filtered = projects.filter((project) => {
+         const matchesCategory = category === 'All' || project.type === category;
+         const matchesQuery = project.name.toLowerCase().includes(lowerCaseQuery);
+         return matchesCategory && matchesQuery;
+       });
+       setFilteredProjects(filtered);
+     };
+   
+     return (
+<div style={{position: 'relative'}}>
       <Navbar/>
       <img className='pro-mimg' src={mimg1} alt='Background'/>
       <div className='pro-content'>
@@ -88,607 +127,57 @@ const Projects = () => {
       </div>
       <div className='pro-body01'>
         <div className='pro-st1'>Ongoing Projects</div>
-        <div className='pro-line'></div>
-        <div className='pro-tline'>{buttonText}</div>
-        <div className='pro-line'></div>
+        <div className='pro-tline'>
+          <div className='pro-line'></div>
+          {activeCategory}
+          <div className='pro-line'></div>
+        </div>
       </div>
       <div className='pro-body02'>
         <div className='pro-Subbody01'>
           <div className='pro-fil'>Filters</div>
           <div className='pro-sea'>search</div>   
         </div>
+        </div>
         <div className='pro-body03'>
         <div className='pro-Subbody02'>
             <div className='pro-st2'>Project Types</div>
-
-            <button
-              className={`pro-con1-t1 ${activeButton === 1 ? 'active' : ''}`}
-              onClick={() => handleButtonClick(1, 'Single Family Homes')}
-            >
-              Single Family Homes
-            </button>
-            <br/>
-
-            <button
-              className={`pro-con1-t1 ${activeButton === 2 ? 'active' : ''}`}
-              onClick={() => handleButtonClick(2, 'Multi-Unit Dwellings')}
-            >
-              Multi-Unit Dwellings
-            </button>
-            <br/>
-
-            <button
-              className={`pro-con1-t1 ${activeButton === 3 ? 'active' : ''}`}
-              onClick={() => handleButtonClick(3, 'Retail Spaces')}
-            >
-              Retail Spaces
-            </button>
-            <br/>
-
-            <button
-              className={`pro-con1-t1 ${activeButton === 4 ? 'active' : ''}`}
-              onClick={() => handleButtonClick(4, 'Office Spaces')}
-            >
-              Office Spaces
-            </button>
-            <br/>
-
-            <button
-              className={`pro-con1-t1 ${activeButton === 5 ? 'active' : ''}`}
-              onClick={() => handleButtonClick(5, 'Warehouses')}
-            >
-              Warehouses
-            </button>
-
           </div>
-          <div className='pro-event01'>
-          <div className='pro-event' ref={scrollRefs[1]}>
-             <div className='pro-Subbody04'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={pp1}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 07, 2024</p>
-                    <p className='pro-head'>Modern Farmhouse Dream</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 0 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(0)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={pp2}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>April 18, 2024</p>
-                    <p className='pro-head'>Serenity Springs Residence</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>73%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>1.0Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 1 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(1)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>
-               <div className='pro-Subbody05'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={pp3}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>June 22, 2024</p>
-                    <p className='pro-head'>Sunset Ridge Chalet</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>67%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.1Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 2 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(2)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={pp5}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 01, 2024</p>
-                    <p className='pro-head'>Bluebird Meadow Homestead</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>87%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>1.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 3 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(3)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>
-               <div className='pro-Subbody05'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={pp9}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 17, 2024</p>
-                    <p className='pro-head'>Harmony Hill House</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 4 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(4)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={pp8}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 27, 2024</p>
-                    <p className='pro-head'>Willowbrook Cottage</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 5 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(5)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>  
-               
           </div>
-
-          <div className='pro-event' ref={scrollRefs[2]}>
-             <div className='pro-Subbody04'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppmu1}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 07, 2024</p>
-                    <p className='pro-head'>Tranquil Haven</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 0 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(0)}
-                    >
-                    More Details
-                    </button>
+         <div className='filter-container'>
+           {categories.map((category) => (
+             <button
+               key={category}
+               onClick={() => handleCategoryChange(category)}
+               className={`filter-button ${activeCategory === category ? 'active' : ''}`}
+             >
+               {category}
+             </button>
+           ))}
+         </div>
+         <div className="project-cards-container">
+           {filteredProjects.length > 0 ? (
+             filteredProjects.map((project) => (
+               <div key={project.id} className="project-card">
+                 <img src={project.image} alt={project.name} className="project-image" />
+                 <div className="project-details">
+                   <p className="pro-date"><b>{project.date}</b></p>
+                   <h3 className="pro-head">{project.name}</h3>
+                   <p><b>Progress:</b> {project.progress}</p>
+                   <p><b>Cost:</b> {project.cost}</p>
+                   <p><b>Type:</b> {project.type}</p>
+                   <button className="more-details-btn">More Details</button>
+                 </div>
                </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppmu2}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>July 15, 2024</p>
-                    <p className='pro-head'>Collective Haven Residences</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>82%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>1.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 1 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(1)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>
-               <div className='pro-Subbody05'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppmu3}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 09, 2024</p>
-                    <p className='pro-head'>Community Comfort Homes</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 2 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(2)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppmu4}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 10, 2024</p>
-                    <p className='pro-head'>Family Retreat Residences</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 3 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(3)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>
-               <div className='pro-Subbody05'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppmu5}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 17, 2024</p>
-                    <p className='pro-head'>Serene Sanctuaries</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 4 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(4)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppmu6}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 27, 2024</p>
-                    <p className='pro-head'>Village Green Residences</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 5 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(5)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>  
-               
-          </div>
-          
-          <div className='pro-event' ref={scrollRefs[3]}>
-             <div className='pro-Subbody04'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={pprs1}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 07, 2024</p>
-                    <p className='pro-head'>Garden Gate Estates</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 0 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(0)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={pprs2}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 08, 2024</p>
-                    <p className='pro-head'>Urban Chic Haven</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 1 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(1)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>
-               <div className='pro-Subbody05'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={pprs3}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 09, 2024</p>
-                    <p className='pro-head'>Rustic Retreat Boutique</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 2 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(2)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={pprs4}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 10, 2024</p>
-                    <p className='pro-head'>Vintage Vogue Emporium</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 3 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(3)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>
-               <div className='pro-Subbody05'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={pprs5}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 17, 2024</p>
-                    <p className='pro-head'>Coastal Charm Market</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 4 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(4)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={pprs6}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 27, 2024</p>
-                    <p className='pro-head'>Luxe Living Loft</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 5 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(5)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>  
-               
-          </div>
-
-          <div className='pro-event' ref={scrollRefs[4]}>
-             <div className='pro-Subbody04'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppof1}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 07, 2024</p>
-                    <p className='pro-head'>Modern Minimalist Mart</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 0 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(0)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppof2}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 08, 2024</p>
-                    <p className='pro-head'>Innovation Station</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 1 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(1)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>
-               <div className='pro-Subbody05'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppof3}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 09, 2024</p>
-                    <p className='pro-head'>Harmony Hub</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 2 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(2)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppof4}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 10, 2024</p>
-                    <p className='pro-head'>Serenity Suite</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 3 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(3)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>
-               <div className='pro-Subbody05'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppof5}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 17, 2024</p>
-                    <p className='pro-head'>Dynamic Den</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 4 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(4)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppof6}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 27, 2024</p>
-                    <p className='pro-head'>Modern Manor</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 5 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(5)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>  
-               
-          </div>
-
-          <div className='pro-event' ref={scrollRefs[5]}>
-             <div className='pro-Subbody04'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppwh1}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 07, 2024</p>
-                    <p className='pro-head'>Prestige Place</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 0 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(0)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppwh2}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 08, 2024</p>
-                    <p className='pro-head'>Industrial Bliss Depot</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 1 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(1)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>
-               <div className='pro-Subbody05'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppwh3}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 09, 2024</p>
-                    <p className='pro-head'>Rustic Charm Warehouse</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 2 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(2)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppwh4}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 10, 2024</p>
-                    <p className='pro-head'>Vintage Vault Haven</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 3 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(3)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>
-               <div className='pro-Subbody05'>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppwh5}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 17, 2024</p>
-                    <p className='pro-head'>Contemporary Storage Oasis</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 4 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(4)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               <div className='pro-scon1'>
-               <img className='pro-img' src={ppwh6}/>
-               <div className='pro-box'>
-                    <p className='pro-date'>March 27, 2024</p>
-                    <p className='pro-head'>Timeless Treasure Depot</p>
-                    <p className='pro-para'>MVIVO (PVT) Ltd</p>
-                    <p className='pro-prog'>Progress: <b>70%</b></p>
-                    <p className='pro-est'>Estimation Cost: <b>2.5Cr</b></p>
-                    <button 
-                    className={`pro-md ${activeDetailButton === 5 ? 'active' : ''}`} 
-                    onClick={() => handleDetailButtonClick(5)}
-                    >
-                    More Details
-                    </button>
-               </div>
-               </div>
-               </div>  
-               
-          </div>
-
-
-
-
-
-
-
-          </div>
-               
-
-
-        </div>
-        
-      </div>
-      <button className='pro-sm'>see more</button>
-      <Footer/>  
-    </div>
-  );
-};
-
-export default Projects;
+             ))
+           ) : (
+             <p className="no-projects-message">No projects found.</p>
+           )}
+         </div>
+         <Footer />
+       </div>
+       
+     );
+   };
+   
+   export default Projects;

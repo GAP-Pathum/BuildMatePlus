@@ -5,17 +5,20 @@ import abimg from "../Components/Assets/Abh.jpg"
 import aboutimg from "../Components/Assets/About.jpg"
 import Navbar from '../Components/Navbar/Navbar'
 import { Link } from 'react-router-dom';
+import AdSidebar from '../Components/AdSidebar/AdSidebar';
+import SubscribePopup from '../Components/Subscribe/Sub';
 
 export default function About() {
   return (
     <div>
 
         <Navbar/>
+        <AdSidebar/>
       <div className='home'>
            <img className='wall1' src={abimg} alt='Background' />
            <div className='ab-content'>
              <h1 className='ab-topic'>About Us</h1>
-             <p className='ab-subtopic'>Crafting Dreams, Building Futures:<br/><span class="larger">Discover Our Story at Buildmate+</span></p>
+             <p className='pro-subtopic'>Crafting Dreams, Building Futures:<br/><span class="larger">Discover Our Story at Buildmate+</span></p>
             </div>
          </div>
          <h1 className='ab-q'>What is BuildMate+ ?</h1>
@@ -37,7 +40,9 @@ export default function About() {
         </div>
         <p className='last'>Discover Our Ongoing and Completed </p>
         <p className='last2'>Projects : <span class="highlight"><Link to="/Pages/Projects">Watch Out</Link></span></p>
-        <Footer/>   
+
+        <SubscribePopup />
+        <Footer/> 
   </div>
   )
 }

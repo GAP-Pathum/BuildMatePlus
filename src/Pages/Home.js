@@ -5,10 +5,7 @@ import homeimg from '../Components/Assets/wall1.jpg';
 import ic1 from '../Components/Assets/ic1.png'; 
 import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/footer';
-import women from '../Components/Assets/Home-women.png';
 import seemore from '../Components/Assets/down-arrow.png';
-import dreamimage from '../Components/Assets/1638943222107.jpeg';
-import oppertunityimg from '../Components/Assets/construction-company-names.jpg';
 import growthImage from '../Components/Assets/growth.png';
 import groupImage from '../Components/Assets/group.png';
 import propertyImage from '../Components/Assets/property.png';
@@ -18,8 +15,9 @@ import reviewImg01 from "../Components/Assets/review01.jpeg";
 import reviewImg02 from "../Components/Assets/review02.jpeg";
 import reviewImg03 from "../Components/Assets/review03.jpeg";
 import boxImg01 from "../Components/Assets/BoxImg01.png"
-import boxImg02 from "../Components/Assets/BoxImg02.png";
-import boxImg03 from "../Components/Assets/BoxImg03.png"
+import btn2 from '../Components/Assets/btn2.png';
+import btn3 from '../Components/Assets/btn3.0.png';
+import btn4 from '../Components/Assets/btn4.0.png';
 import 'animate.css';
 import SearchBar from '../Components/Searchbar/SearchBar';
 import AdSidebar from '../Components/AdSidebar/AdSidebar';
@@ -134,6 +132,8 @@ const Home = () => {
 </div>;
   }
 
+  
+
   return (
     <>
       <div className='homepage'>
@@ -152,7 +152,7 @@ const Home = () => {
             <SearchBar />
             <div className='arrow'>
               <img
-                className='downarrow' src={seemore} alt='downarrow'
+                className='downarrow animate__animated animate__infinite animate__bounce' src={seemore} alt='downarrow'
                 onClick={pathWindow}
               />
             </div>
@@ -160,45 +160,41 @@ const Home = () => {
         </div>
         <div className='path'>
           <div className='h1'>
-          <div className='firstbox'id='firstbox'>
+              <div className='firstbox'id='firstbox'>
                         <div className='boxCollection1'>
-                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef} style={{ animationDelay: '5s' }}>
                             <div className='box1'>
                               <img src={boxImg01} className='boxImg01' alt=' '/>
                               <div className='box'>
                                   <h3 className='h1-text'>
-                                  Register to join the BuildMate+ community and start your construction journey
+                                  Join BuildMate+ for construction success
                                   </h3>
                                   <Link to='/Pages/Registration'>
-
                                       <button className='h1-button'>Be a BuildMate</button>
                                   </Link>
                               </div>
                               </div>
                           </div>
-                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={backInRightRef}style={{ animationDelay: '5s' }}>
                             <div className='box1'>
-                              
+                              <img src={btn2} className='btn2' alt=' '/>
                               <div className='box-Right'>
                                   <h3 className='h1-text-Right'>
-                                  Create your perfect team of professionals, materials, and service suppliers for your project.
+                                  Build your dream team effortlessly
                                   </h3>
                                   <Link to='/Pages/connect'>
                                       <button className='h1-button-Right'>Build your team</button>
                                   </Link>
                               </div>
-                              <img src={women} className='boxImg01' alt=' '/>
+                              
                               </div>
                           </div>
-                        </div>
-                        <div className='boxCollection1' style={{marginTop:'5%'}}>
-
-                          <div className='animate_box1 animate__animated animate__fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='animate_box1 animate__animated animate__fadeInRight' ref={fadeInLeftRef} style={{ animationDelay: '5s' }}>
                             <div className='box1'>
-                              <img src={boxImg02} className='boxImg01' alt=' '/>
+                              <img src={btn3} className='btn3' alt=' '/>
                               <div className='box'>
                                   <h3 className='h1-text'>
-                                  Explore ongoing industry projects and stay updated on the latest construction trends.
+                                  Discover projects, trends, updates
                                   </h3>
                                   <Link to='/Pages/Projects'>
                                       <button className='h1-button'>Project Explorer</button>
@@ -206,24 +202,21 @@ const Home = () => {
                               </div>
                               </div>
                           </div>
-                          <div className='animate_box1 animate_animated animate_fadeInLeft' ref={fadeInLeftRef}>
+                          <div className='animate_box1 animate__animated animate__fadeInRight' ref={backInRightRef} style={{ animationDelay: '5s' }}>
                             <div className='box1'>
-                              
+                              <img src={btn4} className='boxImg01' alt=' '/>
                               <div className='box-Right'>
                                   <h3 className='h1-text-Right'>
-                                  Use AI to generate and visualize your dream construction project.
+                                  Visualize your project with AI
                                   </h3>
                                   <Link to='/Pages/ImageGeneration'>
                                       <button className='h1-button-Right'>Build your dream</button>
                                   </Link>
                               </div>
-                              <img src={boxImg03} className='boxImg01' alt=' '/>
+                              
                               </div>
                           </div>
-                        </div>
-                        
-                    
-                          
+                        </div>       
                  </div> 
 
             <div className='det'>
@@ -252,7 +245,6 @@ const Home = () => {
             </div>
           </div>
           <div className='sub-head-content'>
-            <img src={women} alt='woman' className='woman-img' />
             <div className='wel-all-collection'>
               <div className='wel-all'>
                 <h1 className='wel-h'>Welcome to BuildMate+</h1>
@@ -290,7 +282,7 @@ const Home = () => {
                 <p className="re">
                   "BuildMate+ has significantly improved our project coordination and execution. The Dream Project Matchmaking feature is fantastic for finding projects that fit our expertise. Streamlined communication has reduced the back-and-forth between team members, making our workflow more efficient. The 3D Design Integration allows us to present detailed plans to clients, enhancing their understanding and satisfaction. Overall, BuildMate+ has been an invaluable tool for our firm."
                 </p>
-                <div className="line-re"></div>
+                <div className='line-re'></div>
                 <div className="footer-con">
                   <div className="position">
                     <p className='re-name'>Sophia Williams</p>

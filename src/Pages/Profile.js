@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import './ArchProfile.css';
+//import './ArchProfile.css';
 import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/footer';
 import leftArrow from '../Components/Assets/left-arrow.png';
@@ -34,7 +34,7 @@ const Profile = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const location = useLocation();
-  const profileId = location.state?.id; // Get the ID from location state
+  const profileId = location.state?.id;
 
   useEffect(() => {
     const fetchProfileData = async () => {

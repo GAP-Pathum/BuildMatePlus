@@ -67,14 +67,14 @@ const Footer = () => {
                         <div className="contact-logo">
                             <div className="contact-detail"><img src={phone} alt="phone" className="c-logo" /><p style={{ margin: ' 0 ', paddingLeft: '5%' }}>123-456-7890</p></div>
                             <div className="contact-detail"><img src={email} alt="email" className="c-logo" /><p style={{ margin: '0', paddingLeft: '5%' }}> info@buildmateplus.com</p></div>
-                            <div className="contact-detail"><img src={gps} alt="gps" className="c-logo" /><p style={{ margin: '0 ', paddingLeft: '5%' }}>123 Main Street, City, Country</p></div>
+                            <div className="contact-detail"><img src={gps} alt="gps" className="c-logo" /><p style={{ margin: '0 ', paddingLeft: '5%',textAlign:'left',fontSize:'15px' }}>123 Main Street,City</p></div>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div className="footer-bottom">
-                <p>© 2024 Buildmate+. All Rights Reserved.</p>
+                <p>© 2024 Buildmate+ | All Rights Reserved.</p>
                 <Link to="/Pages/privacy-policy">Privacy and Policy</Link>
             </div>
         </div>
